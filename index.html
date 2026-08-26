@@ -84,18 +84,30 @@
 </section>
 
 <section class="detail" id="detailPanel">
-  <div class="container">
+  <div class="container detail-topbar">
     <button class="back" id="backBtn">&larr; Back to all artists</button>
-    <div class="detail-head">
-      <div class="detail-photo" id="detailPhoto">Photo</div>
-      <div class="detail-info">
-        <span class="im">I'm</span>
-        <h2 id="detailName">Artist name</h2>
-        <span class="loc" id="detailLoc">Location</span>
-        <p class="bio" id="detailBio">Artist bio goes here.</p>
-        <div class="reviews" id="detailReviews"></div>
-        <p class="contact-note">Buying enquiries are sent by email directly to the artist, with Cornwall Makers copied in.</p>
-      </div>
+  </div>
+
+  <div class="detail-hero" id="detailHero">
+    <div class="detail-hero-overlay"></div>
+    <div class="detail-hero-content">
+      <span class="detail-hero-name script" id="heroName">Name</span>
+      <span class="detail-hero-tag" id="heroTag">Location</span>
+      <a href="#detailWorks" class="btn ghost light">View available work</a>
+    </div>
+  </div>
+
+  <div class="detail-intro">
+    <span class="script detail-intro-name" id="introName">Name</span>
+    <p class="detail-intro-quote" id="introQuote">Bio goes here.</p>
+    <div class="reviews" id="detailReviews"></div>
+    <p class="contact-note">Buying enquiries are sent by email directly to the artist, with Cornwall Makers copied in.</p>
+  </div>
+
+  <div class="detail-works container" id="detailWorks">
+    <div class="section-head">
+      <h2>The Collection</h2>
+      <p>Available now</p>
     </div>
     <div class="work-grid" id="workGrid"></div>
   </div>
