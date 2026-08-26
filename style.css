@@ -149,27 +149,52 @@
   .artist-card .view svg{width:14px; transition:transform .2s;}
   .artist-card:hover .view svg{transform:translateX(4px);}
 
-  /* ---------- Artist detail (modal-ish full panel) ---------- */
+  /* ---------- Artist detail (editorial hero layout) ---------- */
   .detail{
-    display:none; padding:60px 0 90px; border-top:1px solid var(--granite); border-bottom:1px solid var(--line);
-    background:var(--sand);
+    display:none; border-top:1px solid var(--granite); border-bottom:1px solid var(--line);
+    background:var(--cream);
   }
   .detail.open{display:block;}
-  .detail-head{display:grid; grid-template-columns: 340px 1fr; gap:56px; margin-bottom:56px; align-items:center;}
-  @media(max-width:760px){.detail-head{grid-template-columns:1fr;}}
-  .detail-photo{
-    width:100%; aspect-ratio:4/5;
-    background:repeating-linear-gradient(135deg, var(--cream), var(--cream) 10px, #e9ddc0 10px, #e9ddc0 20px);
-    border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center; color:var(--slate); font-size:12px; text-transform:uppercase;
+  .detail-topbar{padding:20px 0 0;}
+  .back{font-size:13px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sea); text-decoration:none; display:inline-block; cursor:pointer; background:none; border:none; font-family:inherit; padding:0;}
+
+  .detail-hero{
+    position:relative; width:100%; height:56vw; min-height:340px; max-height:560px;
+    margin-top:20px;
+    background:
+      linear-gradient(120deg, #cfd8c8 0%, #e9dfc4 35%, #d9c9a8 60%, #c9d3cf 100%);
+    overflow:hidden;
   }
-  .detail-info{flex:1; min-width:240px;}
-  .detail-info .back{font-size:13px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sea); text-decoration:none; display:inline-block; margin-bottom:18px; cursor:pointer; background:none; border:none; font-family:inherit; padding:0;}
-  .detail-info .im{font-family:'Mrs Saint Delafield', cursive; font-weight:400; color:var(--slate); font-size:24px; display:block; margin-bottom:2px;}
-  .detail-info h2{font-family:'Mrs Saint Delafield', cursive; font-weight:400; font-size:clamp(38px,6vw,58px); color:var(--granite);}
-  .detail-info .loc{color:var(--sea); text-transform:uppercase; font-size:12px; letter-spacing:0.08em; margin-top:10px; display:block; font-family:'Work Sans';}
-  .detail-info .bio{color:var(--slate); max-width:480px; margin-top:18px; font-size:15px;}
-  .detail-info .contact-note{margin-top:22px; font-size:13px; color:var(--slate); border-left:2px solid var(--clay); padding-left:12px; max-width:440px;}
+  .detail-hero-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(43,47,74,0.05) 0%, rgba(43,47,74,0.35) 100%);
+  }
+  .detail-hero-content{
+    position:absolute; inset:0; padding:36px;
+    display:flex; flex-direction:column; align-items:flex-end; justify-content:space-between;
+    text-align:right;
+  }
+  .detail-hero-name{
+    font-size:clamp(40px, 7vw, 76px); color:var(--cream); line-height:1;
+    text-shadow:0 2px 18px rgba(0,0,0,0.18);
+  }
+  .detail-hero-tag{
+    color:var(--cream); font-size:12px; letter-spacing:0.12em; text-transform:uppercase;
+    opacity:0.9; margin-top:8px;
+  }
+  .btn.ghost.light{
+    border-color:var(--cream); color:var(--cream); background:transparent;
+  }
+  .btn.ghost.light:hover{background:var(--cream); color:var(--granite);}
+
+  .detail-intro{
+    max-width:640px; margin:0 auto; padding:56px 32px 64px; text-align:center;
+  }
+  .detail-intro-name{font-size:clamp(30px,5vw,42px); display:block; margin-bottom:14px;}
+  .detail-intro-quote{color:var(--slate); font-size:17px; line-height:1.7;}
+  .detail-intro .contact-note{margin:26px auto 0; font-size:13px; color:var(--slate); border-left:2px solid var(--clay); padding-left:12px; max-width:420px; text-align:left;}
+
+  .detail-works{padding:0 0 80px;}
 
   .work-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
   @media(max-width:800px){.work-grid{grid-template-columns:repeat(2,1fr);}}
