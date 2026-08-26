@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cornwall Makers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --granite: #2e3538;
+    --slate: #4c6169;
+    --sea: #3c6e6a;
+    --cream: #f2ede2;
+    --sand: #e4d9c4;
+    --clay: #b0603f;
+    --ink: #23282a;
+    --line: rgba(46,53,56,0.14);
+    --radius: 2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--granite);
+    margin:0;
+  }
+  a{color:inherit;}
+  .container{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.container{padding:0 20px;}}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(242,237,226,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0;
+  }
+  .brand{
+    font-family:'Fraunces', serif; font-size:22px; font-weight:600;
+    letter-spacing:-0.02em;
+  }
+  .brand em{font-style:italic; color:var(--sea); font-weight:400;}
+  nav.links{display:flex; gap:32px; font-size:14px; letter-spacing:0.03em; text-transform:uppercase;}
+  nav.links a{text-decoration:none; opacity:0.75; transition:opacity .2s;}
+  nav.links a:hover, nav.links a:focus-visible{opacity:1;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:96px 0 80px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .eyebrow{
+    font-size:13px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--sea); margin-bottom:20px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(38px, 6vw, 68px);
+    line-height:1.04;
+    max-width:820px;
+  }
+  .hero h1 .line2{display:block; color:var(--sea); font-style:italic; font-weight:400;}
+  .hero p.lede{
+    max-width:520px; margin-top:28px; font-size:18px; color:var(--slate);
+  }
+  .hero .cta-row{margin-top:36px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:14px 26px; font-size:14px;
+    letter-spacing:0.04em; text-transform:uppercase; text-decoration:none;
+    border-radius:var(--radius); border:1px solid var(--granite);
+    background:var(--granite); color:var(--cream); cursor:pointer;
+    font-family:'Work Sans', sans-serif; transition:transform .15s ease, background .2s;
+  }
+  .btn:hover{background:var(--sea); border-color:var(--sea); transform:translateY(-1px);}
+  .btn.ghost{background:transparent; color:var(--granite);}
+  .btn.ghost:hover{background:var(--granite); color:var(--cream);}
+  .btn.small{padding:10px 18px; font-size:12px;}
+
+  /* coastline signature graphic */
+  .coastline{
+    margin-top:64px; width:100%; height:120px;
+  }
+  .coastline path{fill:none; stroke:var(--slate); stroke-width:1.4; opacity:0.55;}
+  .coastline circle{fill:var(--clay);}
+  .coastline .dot-label{
+    font-family:'Work Sans'; font-size:10px; letter-spacing:0.06em; fill:var(--granite); text-transform:uppercase;
+  }
+
+  /* ---------- Why section ---------- */
+  .why{padding:80px 0; border-bottom:1px solid var(--line);}
+  .why-grid{
+    display:grid; grid-template-columns: 1fr 1.4fr; gap:64px; align-items:start;
+  }
+  @media(max-width:800px){.why-grid{grid-template-columns:1fr; gap:32px;}}
+  .why h2{font-size:clamp(28px,4vw,38px); max-width:360px;}
+  .why-stats{display:flex; flex-direction:column; gap:28px;}
+  .stat{border-top:1px solid var(--line); padding-top:16px;}
+  .stat .num{font-family:'Fraunces'; font-size:34px; color:var(--sea);}
+  .stat p{margin:6px 0 0; color:var(--slate); font-size:15px; max-width:420px;}
+  .why-copy p{color:var(--slate); font-size:16px; max-width:560px;}
+
+  /* ---------- Artists ---------- */
+  .artists{padding:80px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; gap:20px; flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(28px,4vw,40px);}
+  .section-head p{color:var(--slate); max-width:360px; margin:0;}
+
+  .artist-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  @media(max-width:900px){.artist-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.artist-grid{grid-template-columns:1fr;}}
+
+  .artist-card{
+    background:var(--cream); padding:28px; cursor:pointer; border:none; text-align:left;
+    font-family:inherit; display:flex; flex-direction:column; gap:16px;
+    transition:background .2s; position:relative;
+  }
+  .artist-card:hover, .artist-card:focus-visible{background:var(--sand);}
+  .artist-photo{
+    width:100%; aspect-ratio:4/5; background:
+      repeating-linear-gradient(135deg, var(--sand), var(--sand) 10px, #ded1b6 10px, #ded1b6 20px);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--slate); font-size:12px; letter-spacing:0.05em; text-transform:uppercase;
+  }
+  .artist-card h3{font-size:20px;}
+  .artist-card .loc{font-size:13px; color:var(--sea); text-transform:uppercase; letter-spacing:0.05em;}
+  .artist-card .view{font-size:13px; color:var(--slate); display:flex; align-items:center; gap:6px;}
+  .artist-card .view svg{width:14px; transition:transform .2s;}
+  .artist-card:hover .view svg{transform:translateX(4px);}
+
+  /* ---------- Artist detail (modal-ish full panel) ---------- */
+  .detail{
+    display:none; padding:60px 0 90px; border-top:1px solid var(--granite); border-bottom:1px solid var(--line);
+    background:var(--sand);
+  }
+  .detail.open{display:block;}
+  .detail-head{display:flex; gap:40px; flex-wrap:wrap; margin-bottom:52px; align-items:flex-start;}
+  .detail-photo{
+    width:200px; height:250px; flex-shrink:0;
+    background:repeating-linear-gradient(135deg, var(--cream), var(--cream) 10px, #e6dcc6 10px, #e6dcc6 20px);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; color:var(--slate); font-size:12px; text-transform:uppercase;
+  }
+  .detail-info{flex:1; min-width:240px;}
+  .detail-info .back{font-size:13px; text-transform:uppercase; letter-spacing:0.05em; color:var(--sea); text-decoration:none; display:inline-block; margin-bottom:18px; cursor:pointer; background:none; border:none; font-family:inherit; padding:0;}
+  .detail-info h2{font-size:clamp(28px,4vw,42px);}
+  .detail-info .loc{color:var(--sea); text-transform:uppercase; font-size:13px; letter-spacing:0.05em; margin-top:8px; display:block;}
+  .detail-info .bio{color:var(--slate); max-width:520px; margin-top:18px; font-size:15px;}
+  .detail-info .contact-note{margin-top:20px; font-size:13px; color:var(--slate); border-left:2px solid var(--clay); padding-left:12px; max-width:440px;}
+
+  .work-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  @media(max-width:800px){.work-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.work-grid{grid-template-columns:1fr;}}
+  .work-card{background:var(--cream); border:1px solid var(--line); padding:16px; display:flex; flex-direction:column; gap:12px;}
+  .work-photo{
+    width:100%; aspect-ratio:1; background:repeating-linear-gradient(135deg, var(--sand), var(--sand) 8px, #ded1b6 8px, #ded1b6 16px);
+    display:flex; align-items:center; justify-content:center; color:var(--slate); font-size:11px; text-transform:uppercase;
+  }
+  .work-card h4{font-size:16px; font-family:'Fraunces'; font-weight:500;}
+  .work-card .price{font-size:14px; color:var(--sea);}
+  .work-card .btn{width:100%; text-align:center;}
+
+  /* ---------- How it works ---------- */
+  .how{padding:80px 0; border-bottom:1px solid var(--line);}
+  .how-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px;}
+  @media(max-width:800px){.how-grid{grid-template-columns:1fr;}}
+  .how-step .mark{font-family:'Fraunces'; font-style:italic; color:var(--clay); font-size:22px;}
+  .how-step h3{margin-top:10px; font-size:19px;}
+  .how-step p{color:var(--slate); font-size:15px; margin-top:8px;}
+
+  /* ---------- Footer ---------- */
+  footer{padding:56px 0; }
+  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; align-items:center;}
+  footer .brand{font-size:18px;}
+  footer p{color:var(--slate); font-size:13px; margin:0;}
+
+  .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important; scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">Cornwall <em>Makers</em></div>
+    <nav class="links">
+      <a href="#artists">Artists</a>
+      <a href="#how">How it works</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">A marketplace for Cornish artists</span>
+    <h1>Art made along<span class="line2">this coastline, sold directly to you.</span></h1>
+    <p class="lede">Cornwall has drawn painters, potters and printmakers for well over a century — from the light that once filled the studios of St Ives to the working harbours of Newlyn. Cornwall Makers is a place to meet the artists working here now, and to buy their work directly.</p>
+    <div class="cta-row">
+      <a href="#artists" class="btn">Meet the artists</a>
+      <a href="#how" class="btn ghost">How buying works</a>
+    </div>
+
+    <svg class="coastline" viewBox="0 0 1180 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,70 C120,40 180,90 260,60 C340,30 400,80 480,55 C560,30 620,75 700,50 C780,25 840,70 920,45 C1000,20 1060,60 1180,40" />
+      <circle cx="260" cy="60" r="4"></circle>
+      <circle cx="480" cy="55" r="4"></circle>
+      <circle cx="700" cy="50" r="4"></circle>
+      <circle cx="920" cy="45" r="4"></circle>
+    </svg>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container why-grid">
+    <div class="why-copy">
+      <h2>Why buying local, from the artist, still matters</h2>
+      <p>When a piece is bought through a gallery or a large platform, a significant share of the price rarely reaches the person who made it. Buying directly means more of what you pay goes to the artist — and you get to know whose hands made the thing on your wall.</p>
+    </div>
+    <div class="why-stats">
+      <div class="stat">
+        <div class="num">Direct</div>
+        <p>Every enquiry on this site goes straight to the artist — no gallery mark-up sitting between you and them.</p>
+      </div>
+      <div class="stat">
+        <div class="num">Local</div>
+        <p>Every artist listed here lives and works in Cornwall, from the north coast down to the Lizard.</p>
+      </div>
+      <div class="stat">
+        <div class="num">Known</div>
+        <p>Each profile tells you who made the work and where — not just a product listing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="artists" id="artists">
+  <div class="container">
+    <div class="section-head">
+      <h2>Meet the artists</h2>
+      <p>Click through to an artist's page to see their available work and get in touch.</p>
+    </div>
+    <div class="artist-grid" id="artistGrid"></div>
+  </div>
+</section>
+
+<section class="detail" id="detailPanel">
+  <div class="container">
+    <button class="back" id="backBtn">&larr; Back to all artists</button>
+    <div class="detail-head">
+      <div class="detail-photo" id="detailPhoto">Photo</div>
+      <div class="detail-info">
+        <h2 id="detailName">Artist name</h2>
+        <span class="loc" id="detailLoc">Location</span>
+        <p class="bio" id="detailBio">Artist bio goes here.</p>
+        <p class="contact-note">Buying enquiries are sent by email directly to the artist, with Cornwall Makers copied in.</p>
+      </div>
+    </div>
+    <div class="work-grid" id="workGrid"></div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-head">
+      <h2>How buying works</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <span class="mark">First</span>
+        <h3>Browse an artist's page</h3>
+        <p>Open any artist to see the pieces they currently have available, with prices.</p>
+      </div>
+      <div class="how-step">
+        <span class="mark">Then</span>
+        <h3>Send an enquiry</h3>
+        <p>"Enquire to buy" opens an email addressed to the artist, with the piece and price already filled in, and Cornwall Makers copied in.</p>
+      </div>
+      <div class="how-step">
+        <span class="mark">Finally</span>
+        <h3>Arrange it together</h3>
+        <p>The artist replies directly to confirm payment and delivery or collection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+    <div class="brand">Cornwall <em>Makers</em></div>
+    <p>&copy; 2026 Cornwall Makers. All artwork remains the property of the artist.</p>
+  </div>
+</footer>
+
+<script>
+  // ---- EDIT THIS DATA -----------------------------------------------
+  // Fill in real artist details here. Leave "photo" as null until you
+  // have real images — a placeholder block will show instead.
+  const SITE_CC_EMAIL = "youremail@email.com"; // <-- your generic email, cc'd on every enquiry
+
+  const artists = [
+    {
+      id: "artist-1",
+      name: "Artist 1",
+      location: "Location",
+      email: "artist1@email.com",
+      bio: "Artist bio goes here — a couple of sentences about their practice, materials, and where in Cornwall they work.",
+      works: [
+        { title: "Artwork title", price: "£000", medium: "Medium, size" },
+        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+      ]
+    },
+    {
+      id: "artist-2",
+      name: "Artist 2",
+      location: "Location",
+      email: "artist2@email.com",
+      bio: "Artist bio goes here — a couple of sentences about their practice, materials, and where in Cornwall they work.",
+      works: [
+        { title: "Artwork title", price: "£000", medium: "Medium, size" },
+        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+      ]
+    },
+    {
+      id: "artist-3",
+      name: "Artist 3",
+      location: "Location",
+      email: "artist3@email.com",
+      bio: "Artist bio goes here — a couple of sentences about their practice, materials, and where in Cornwall they work.",
+      works: [
+        { title: "Artwork title", price: "£000", medium: "Medium, size" },
+        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+      ]
+    },
+    {
+      id: "artist-4",
+      name: "Artist 4",
+      location: "Location",
+      email: "artist4@email.com",
+      bio: "Artist bio goes here — a couple of sentences about their practice, materials, and where in Cornwall they work.",
+      works: [
+        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+      ]
+    },
+    {
+      id: "artist-5",
+      name: "Artist 5",
+      location: "Location",
+      email: "artist5@email.com",
+      bio: "Artist bio goes here — a couple of sentences about their practice, materials, and where in Cornwall they work.",
+      works: [
+        { title: "Artwork title", price: "£000", medium: "Medium, size" },
+        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+      ]
+    },
+    {
+      id: "artist-6",
+      name: "Artist 6",
+      location: "Location",
+      email: "artist6@email.com",
+      bio: "Artist bio goes here — a couple of sentences about their practice, materials, and where in Cornwall they work.",
+      works: [
+        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+      ]
+    }
+  ];
+  // ---------------------------------------------------------------------
+
+  const grid = document.getElementById('artistGrid');
+  const detail = document.getElementById('detailPanel');
+  const workGrid = document.getElementById('workGrid');
+
+  function renderGrid(){
+    grid.innerHTML = '';
+    artists.forEach(a => {
+      const card = document.createElement('button');
+      card.className = 'artist-card';
+      card.setAttribute('aria-label', `View ${a.name}'s work`);
+      card.innerHTML = `
+        <div class="artist-photo">Photo</div>
+        <div>
+          <span class="loc">${a.location}</span>
+          <h3>${a.name}</h3>
+        </div>
+        <span class="view">View gallery
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      `;
+      card.addEventListener('click', () => openArtist(a.id));
+      grid.appendChild(card);
+    });
+  }
+
+  function openArtist(id){
+    const a = artists.find(x => x.id === id);
+    if(!a) return;
+    document.getElementById('detailName').textContent = a.name;
+    document.getElementById('detailLoc').textContent = a.location;
+    document.getElementById('detailBio').textContent = a.bio;
+
+    workGrid.innerHTML = '';
+    a.works.forEach(w => {
+      const subject = encodeURIComponent(`Enquiry: ${w.title} by ${a.name}`);
+      const body = encodeURIComponent(
+        `Hi ${a.name},\n\nI'd like to buy "${w.title}" (${w.medium}) listed at ${w.price} on Cornwall Makers.\n\nCould you let me know how to arrange payment and delivery/collection?\n\nThanks,\n`
+      );
+      const mailto = `mailto:${a.email}?cc=${encodeURIComponent(SITE_CC_EMAIL)}&subject=${subject}&body=${body}`;
+
+      const card = document.createElement('div');
+      card.className = 'work-card';
+      card.innerHTML = `
+        <div class="work-photo">Artwork photo</div>
+        <h4>${w.title}</h4>
+        <div class="price">${w.price} &middot; ${w.medium}</div>
+        <a class="btn small" href="${mailto}">Enquire to buy</a>
+      `;
+      workGrid.appendChild(card);
+    });
+
+    detail.classList.add('open');
+    detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  document.getElementById('backBtn').addEventListener('click', () => {
+    detail.classList.remove('open');
+    document.getElementById('artists').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  renderGrid();
+</script>
+
+</body>
+</html>
