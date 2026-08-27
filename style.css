@@ -105,7 +105,118 @@ nav.links a:hover, nav.links a:focus-visible{opacity:1;}
 .coastline path{fill:none; stroke:var(--sage); stroke-width:1.4; opacity:0.55;}
 .coastline circle{fill:var(--gold);}
 
-/* ---------- Why section ---------- */
+/* ---------- Paint-swipe hero ---------- */
+.paint-hero{
+  position:relative; width:100%; height:88vh; min-height:520px; max-height:820px;
+  overflow:hidden; background:var(--forest); touch-action:pan-y; cursor:grab; user-select:none;
+}
+.paint-hero.is-dragging{cursor:grabbing;}
+.paint-noise{
+  position:absolute; inset:0; pointer-events:none; opacity:0.05; z-index:5; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.paint-slide{
+  position:absolute; inset:0; z-index:1;
+}
+.paint-slide-next{
+  z-index:2; transform:translateX(-100%);
+}
+.paint-slide-art{
+  position:absolute; inset:0;
+  clip-path:url(#brushClip);
+}
+.paint-overlay{
+  position:absolute; inset:0; z-index:6; display:flex; align-items:flex-end; pointer-events:none;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(20,22,17,0.55) 100%);
+}
+.paint-overlay-inner{width:100%; padding-bottom:64px; pointer-events:auto;}
+.paint-eyebrow{
+  font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--cream);
+  opacity:0.8; display:block; margin-bottom:12px;
+}
+.paint-name{
+  font-family:'Cormorant Garamond', serif; font-weight:600; color:var(--cream);
+  font-size:clamp(38px, 7vw, 76px); line-height:1; margin:0;
+}
+.paint-tag{color:var(--cream); opacity:0.85; font-size:15px; margin:12px 0 20px;}
+.paint-link{
+  color:var(--cream); text-decoration:none; font-size:13px; letter-spacing:0.08em;
+  text-transform:uppercase; border-bottom:1px solid var(--cream); padding-bottom:3px;
+}
+.paint-dots{
+  position:absolute; bottom:28px; right:32px; z-index:7; display:flex; gap:10px; cursor:pointer;
+}
+.paint-dot{
+  width:8px; height:8px; border-radius:50%; background:rgba(248,245,238,0.4); transition:background .2s, transform .2s;
+}
+.paint-dot.active{background:var(--cream); transform:scale(1.3);}
+.swipe-hint{
+  position:absolute; top:28px; right:32px; z-index:7; color:var(--cream);
+  font-size:12px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.85;
+  transition:opacity .4s;
+}
+.swipe-hint.hidden{opacity:0; pointer-events:none;}
+@media(max-width:640px){
+  .paint-hero{height:78vh;}
+  .swipe-hint{top:auto; bottom:28px; left:20px; right:auto;}
+  .paint-dots{bottom:28px; right:20px;}
+}
+
+/* ---------- Featured exhibition cards ---------- */
+.featured{padding:88px 0 20px;}
+.eyebrow-sm{font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); display:block; margin-bottom:10px;}
+.exhibit-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+@media(max-width:900px){.exhibit-grid{grid-template-columns:1fr;}}
+.exhibit-card{
+  position:relative; display:block; aspect-ratio:3/4; overflow:hidden; text-decoration:none; color:inherit;
+  background:linear-gradient(135deg, var(--sand) 0%, #dcd3ba 100%);
+}
+.exhibit-art{
+  position:absolute; inset:0;
+  background:repeating-linear-gradient(135deg, var(--sand), var(--sand) 12px, #e0d7bf 12px, #e0d7bf 24px);
+  transition:transform .6s cubic-bezier(.22,.61,.36,1);
+}
+.exhibit-card:hover .exhibit-art{transform:scale(1.06);}
+.exhibit-info{
+  position:absolute; left:0; right:0; bottom:0; padding:24px;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(30,34,26,0.55) 100%);
+}
+.exhibit-info h3{color:var(--cream); font-size:26px;}
+.exhibit-enter{
+  display:block; margin-top:8px; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+  color:var(--cream); opacity:0; transform:translateY(6px); transition:opacity .3s, transform .3s;
+}
+.exhibit-card:hover .exhibit-enter{opacity:0.9; transform:translateY(0);}
+
+/* ---------- Discover the Art (editorial grid) ---------- */
+.discover{padding:80px 0;}
+.discover-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:180px; gap:18px;}
+@media(max-width:900px){.discover-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.discover-grid{grid-template-columns:1fr; grid-auto-rows:220px;}}
+.discover-piece{
+  position:relative; display:block; overflow:hidden; text-decoration:none; color:inherit;
+  grid-column:span 1; grid-row:span 1;
+}
+.discover-piece.span-2{grid-column:span 2;}
+.discover-piece.tall{grid-row:span 2;}
+@media(max-width:560px){.discover-piece.span-2, .discover-piece.tall{grid-column:span 1; grid-row:span 1;}}
+.discover-art{
+  position:absolute; inset:0;
+  background:repeating-linear-gradient(135deg, var(--sand), var(--sand) 10px, #e3ddc9 10px, #e3ddc9 20px);
+  transition:transform .6s cubic-bezier(.22,.61,.36,1);
+}
+.discover-piece:hover .discover-art{transform:scale(1.05);}
+.discover-caption{
+  position:absolute; left:0; bottom:0; padding:14px 16px;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(30,34,26,0.5) 100%);
+  width:100%;
+}
+.discover-caption span{color:var(--cream); font-size:13px; letter-spacing:0.04em;}
+
+/* ---------- Homepage-only surface texture ---------- */
+body{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+}
 .why{padding:84px 0; border-bottom:1px solid var(--line);}
 .why-grid{display:grid; grid-template-columns: 1fr 1.4fr; gap:64px; align-items:start;}
 @media(max-width:800px){.why-grid{grid-template-columns:1fr; gap:32px;}}
@@ -231,4 +342,3 @@ footer p{color:var(--slate); font-size:13px; margin:0;}
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important; scroll-behavior:auto !important;}
 }
-
