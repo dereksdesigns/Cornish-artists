@@ -9,13 +9,13 @@
       name: "Derek Slavin",
       location: "Location",
       email: "derekslavin@email.com",
-      bio: "Bio goes here — a couple of sentences about his practice, materials, and where in Cornwall he works.",
+      bio: "Bio goes here — a couple of sentences about his practice and materials.",
       reviews: [
         { stars: 5, quote: "Review quote goes here.", who: "Buyer name" }
       ],
       works: [
-        { title: "Artwork title", price: "£000", medium: "Medium, size" },
-        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+        { title: "Artwork title", price: "£000", medium: "Medium, size", stripeLink: "" },
+        { title: "Artwork title", price: "£000", medium: "Medium, size", stripeLink: "" }
       ]
     },
     {
@@ -23,13 +23,13 @@
       name: "Artist 2",
       location: "Location",
       email: "artist2@email.com",
-      bio: "Artist bio goes here — a couple of sentences about their practice, materials, and where in Cornwall they work.",
+      bio: "Artist bio goes here — a couple of sentences about their practice and materials.",
       reviews: [
         { stars: 5, quote: "Review quote goes here.", who: "Buyer name" }
       ],
       works: [
-        { title: "Artwork title", price: "£000", medium: "Medium, size" },
-        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+        { title: "Artwork title", price: "£000", medium: "Medium, size", stripeLink: "" },
+        { title: "Artwork title", price: "£000", medium: "Medium, size", stripeLink: "" }
       ]
     },
     {
@@ -37,13 +37,13 @@
       name: "Artist 3",
       location: "Location",
       email: "artist3@email.com",
-      bio: "Artist bio goes here — a couple of sentences about their practice, materials, and where in Cornwall they work.",
+      bio: "Artist bio goes here — a couple of sentences about their practice and materials.",
       reviews: [
         { stars: 5, quote: "Review quote goes here.", who: "Buyer name" }
       ],
       works: [
-        { title: "Artwork title", price: "£000", medium: "Medium, size" },
-        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+        { title: "Artwork title", price: "£000", medium: "Medium, size", stripeLink: "" },
+        { title: "Artwork title", price: "£000", medium: "Medium, size", stripeLink: "" }
       ]
     },
     {
@@ -51,12 +51,12 @@
       name: "Artist 4",
       location: "Location",
       email: "artist4@email.com",
-      bio: "Artist bio goes here — a couple of sentences about their practice, materials, and where in Cornwall they work.",
+      bio: "Artist bio goes here — a couple of sentences about their practice and materials.",
       reviews: [
         { stars: 5, quote: "Review quote goes here.", who: "Buyer name" }
       ],
       works: [
-        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+        { title: "Artwork title", price: "£000", medium: "Medium, size", stripeLink: "" }
       ]
     },
     {
@@ -64,13 +64,13 @@
       name: "Artist 5",
       location: "Location",
       email: "artist5@email.com",
-      bio: "Artist bio goes here — a couple of sentences about their practice, materials, and where in Cornwall they work.",
+      bio: "Artist bio goes here — a couple of sentences about their practice and materials.",
       reviews: [
         { stars: 5, quote: "Review quote goes here.", who: "Buyer name" }
       ],
       works: [
-        { title: "Artwork title", price: "£000", medium: "Medium, size" },
-        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+        { title: "Artwork title", price: "£000", medium: "Medium, size", stripeLink: "" },
+        { title: "Artwork title", price: "£000", medium: "Medium, size", stripeLink: "" }
       ]
     },
     {
@@ -78,12 +78,12 @@
       name: "Artist 6",
       location: "Location",
       email: "artist6@email.com",
-      bio: "Artist bio goes here — a couple of sentences about their practice, materials, and where in Cornwall they work.",
+      bio: "Artist bio goes here — a couple of sentences about their practice and materials.",
       reviews: [
         { stars: 5, quote: "Review quote goes here.", who: "Buyer name" }
       ],
       works: [
-        { title: "Artwork title", price: "£000", medium: "Medium, size" }
+        { title: "Artwork title", price: "£000", medium: "Medium, size", stripeLink: "" }
       ]
     }
   ];
@@ -91,7 +91,7 @@
 
   // "I'm an artist" contact button — opens an email to you
   document.getElementById('artistContactBtn').href =
-    `mailto:${SITE_CC_EMAIL}?subject=${encodeURIComponent("I'd like to list my work on Cornwall Makers")}&body=${encodeURIComponent("Hi,\n\nI'm an artist based in Cornwall and I'd like to find out about listing my work on Cornwall Makers.\n\nMy name:\nWhere I'm based:\nWhat I make:\n\nThanks,\n")}`;
+    `mailto:${SITE_CC_EMAIL}?subject=${encodeURIComponent("I'd like to list my work on The Screen Gallery")}&body=${encodeURIComponent("Hi,\n\nI'm an artist and I'd like to find out about listing my work on The Screen Gallery.\n\nMy name:\nWhere I'm based:\nWhat I make:\n\nThanks,\n")}`;
 
 
   const grid = document.getElementById('artistGrid');
@@ -141,11 +141,17 @@
 
     workGrid.innerHTML = '';
     a.works.forEach(w => {
-      const subject = encodeURIComponent(`Enquiry: ${w.title} by ${a.name}`);
+      const subject = encodeURIComponent(`Question about: ${w.title} by ${a.name}`);
       const body = encodeURIComponent(
-        `Hi ${a.name},\n\nI'd like to buy "${w.title}" (${w.medium}) listed at ${w.price} on Cornwall Makers.\n\nCould you let me know how to arrange payment and delivery/collection?\n\nThanks,\n`
+        `Hi ${a.name},\n\nI had a question about "${w.title}" (${w.medium}) listed at ${w.price} on The Screen Gallery.\n\nThanks,\n`
       );
       const mailto = `mailto:${a.email}?cc=${encodeURIComponent(SITE_CC_EMAIL)}&subject=${subject}&body=${body}`;
+
+      // If a Stripe Payment Link is set for this piece, show a real "Buy now" button.
+      // Otherwise fall back to an email enquiry.
+      const buyButton = w.stripeLink
+        ? `<a class="btn small" href="${w.stripeLink}" target="_blank" rel="noopener">Buy now</a>`
+        : `<a class="btn small ghost" href="${mailto}">Enquire to buy</a>`;
 
       const card = document.createElement('div');
       card.className = 'work-card';
@@ -153,7 +159,8 @@
         <div class="work-photo">Artwork photo</div>
         <h4>${w.title}</h4>
         <div class="price">${w.price} &middot; ${w.medium}</div>
-        <a class="btn small" href="${mailto}">Enquire to buy</a>
+        ${buyButton}
+        <a class="ask-link" href="${mailto}">Ask a question</a>
       `;
       workGrid.appendChild(card);
     });
