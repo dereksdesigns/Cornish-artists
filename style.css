@@ -27,8 +27,9 @@ h1,h2,h3,.display{
   margin:0;
 }
 .script{
-  font-family:'Petit Formal Script', cursive;
-  font-weight:400;
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-weight:500;
   color:var(--gold);
   line-height:1;
 }
@@ -46,16 +47,22 @@ header{
 }
 .nav{
   display:flex; align-items:center; justify-content:space-between;
-  padding:22px 0;
+  padding:20px 0; flex-wrap:wrap; gap:12px 24px;
 }
 .brand{
-  font-family:'Cormorant Garamond', serif; font-size:24px; font-weight:600;
-  letter-spacing:0.01em;
+  font-family:'Cormorant Garamond', serif; font-size:clamp(20px, 5.5vw, 24px); font-weight:600;
+  letter-spacing:0.01em; white-space:nowrap;
 }
-.brand em{font-family:'Petit Formal Script', cursive; font-style:normal; color:var(--gold); font-weight:400; font-size:1.3em; margin-left:3px;}
-nav.links{display:flex; gap:32px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;}
-nav.links a{text-decoration:none; opacity:0.75; transition:opacity .2s;}
+.brand em{font-style:italic; color:var(--gold); font-weight:500;}
+nav.links{display:flex; gap:24px; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; flex-wrap:wrap;}
+nav.links a{text-decoration:none; opacity:0.75; transition:opacity .2s; white-space:nowrap;}
 nav.links a:hover, nav.links a:focus-visible{opacity:1;}
+
+@media(max-width:520px){
+  .nav{justify-content:center; text-align:center;}
+  .brand{width:100%; text-align:center;}
+  nav.links{justify-content:center; width:100%; gap:18px;}
+}
 
 /* ---------- Hero ---------- */
 .hero{
@@ -75,8 +82,8 @@ nav.links a:hover, nav.links a:focus-visible{opacity:1;}
   font-weight:500;
 }
 .hero h1 .line2{
-  display:block; font-family:'Petit Formal Script', cursive; color:var(--gold);
-  font-weight:400; font-size:0.56em; margin-top:10px; letter-spacing:0;
+  display:block; font-style:italic; color:var(--gold);
+  font-weight:500; font-size:0.5em; margin-top:10px; letter-spacing:0;
 }
 .hero p.lede{
   max-width:520px; margin-top:30px; font-size:18px; color:var(--slate);
@@ -211,7 +218,7 @@ nav.links a:hover, nav.links a:focus-visible{opacity:1;}
 .how{padding:84px 0; border-bottom:1px solid var(--line);}
 .how-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px;}
 @media(max-width:800px){.how-grid{grid-template-columns:1fr;}}
-.how-step .mark{font-family:'Petit Formal Script', cursive; color:var(--gold); font-size:30px;}
+.how-step .mark{font-family:'Cormorant Garamond'; font-style:italic; color:var(--gold); font-size:26px; font-weight:600;}
 .how-step h3{margin-top:10px; font-size:20px;}
 .how-step p{color:var(--slate); font-size:15px; margin-top:8px;}
 
@@ -224,3 +231,4 @@ footer p{color:var(--slate); font-size:13px; margin:0;}
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important; scroll-behavior:auto !important;}
 }
+
