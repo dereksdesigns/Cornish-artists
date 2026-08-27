@@ -207,6 +207,12 @@
   .work-card h4{font-size:16px; font-family:'Playfair Display'; font-weight:600;}
   .work-card .price{font-size:14px; color:var(--sea);}
   .work-card .btn{width:100%; text-align:center;}
+  .work-card .btn.ghost{border-color:var(--granite); color:var(--granite); background:transparent;}
+  .work-card .btn.ghost:hover{background:var(--granite); color:var(--cream);}
+  .work-card .ask-link{
+    display:block; text-align:center; font-size:12px; color:var(--slate);
+    text-decoration:underline; margin-top:2px;
+  }
 
   /* ---------- For Artists ---------- */
   .for-artists{padding:80px 0; border-bottom:1px solid var(--line); background:var(--sand);}
