@@ -14,9 +14,11 @@
   <div class="container nav">
     <div class="brand">The <em>Screen</em> Gallery</div>
     <nav class="links">
-      <a href="index.html#artists">Artists</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#for-artists">For Artists</a>
+      <a href="index.html" class="current">Home</a>
+      <a href="artists.html">Artists</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="buyers.html">Buyers</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
@@ -55,90 +57,29 @@
   <span class="swipe-hint" id="swipeHint">Swipe to discover &rarr;</span>
 </section>
 
-<section class="featured" id="artists">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow-sm">Featured</span>
-      <h2>Enter an exhibition</h2>
-      <p>Every artist here has their own space. Step inside to see their full collection.</p>
-    </div>
-    <div class="exhibit-grid">
-
-      <a class="exhibit-card" href="artists/derek-slavin.html">
-        <div class="exhibit-art"></div>
-        <div class="exhibit-info">
-          <h3>Derek Slavin</h3>
-          <span class="exhibit-enter">Enter exhibition &rarr;</span>
-        </div>
-      </a>
-
-      <a class="exhibit-card" href="artists/artist-2.html">
-        <div class="exhibit-art"></div>
-        <div class="exhibit-info">
-          <h3>Artist 2</h3>
-          <span class="exhibit-enter">Enter exhibition &rarr;</span>
-        </div>
-      </a>
-
-      <a class="exhibit-card" href="artists/artist-3.html">
-        <div class="exhibit-art"></div>
-        <div class="exhibit-info">
-          <h3>Artist 3</h3>
-          <span class="exhibit-enter">Enter exhibition &rarr;</span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<section class="discover" id="discover">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow-sm">Curated</span>
-      <h2>Discover the art</h2>
-      <p>A selection of work, chosen rather than sorted.</p>
-    </div>
-    <div class="discover-grid">
-      <a class="discover-piece span-2 tall" href="artists/derek-slavin.html">
-        <div class="discover-art"></div>
-        <div class="discover-caption"><span>Derek Slavin</span></div>
-      </a>
-      <a class="discover-piece" href="artists/artist-2.html">
-        <div class="discover-art"></div>
-        <div class="discover-caption"><span>Artist 2</span></div>
-      </a>
-      <a class="discover-piece" href="artists/artist-3.html">
-        <div class="discover-art"></div>
-        <div class="discover-caption"><span>Artist 3</span></div>
-      </a>
-      <a class="discover-piece span-2" href="artists/derek-slavin.html">
-        <div class="discover-art"></div>
-        <div class="discover-caption"><span>Derek Slavin</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
 <section class="why" id="about">
   <div class="container why-grid">
     <div class="why-copy">
       <span class="script" style="font-size:22px; display:block; margin-bottom:10px;">A gallery without walls</span>
-      <h2>Why this site exists</h2>
-      <p>I started The Screen Gallery because talented artists are too often shut out by limited gallery space, steep commission rates, and the hassle of building their own online store. This is a simpler way for artists to sell directly, and for buyers to know exactly whose work they're bringing home.</p>
+      <h2>What The Screen Gallery is</h2>
+      <p>The Screen Gallery is a digital gallery where independent artists sell original work directly to buyers. Behind every piece is someone who poured hours, doubt, and hope into making it. We just help you find them — no gallery mark-up, no middlemen, just the work and the person who made it.</p>
+      <p>I started this because talented artists are too often shut out by limited gallery space, steep commission rates, and the hassle of building their own online store. This is a simpler way for artists to sell directly, and for buyers to know exactly whose work they're bringing home.</p>
     </div>
     <div class="why-stats">
       <div class="stat">
-        <div class="num">Direct</div>
-        <p>Every purchase goes straight to the artist — no gallery mark-up sitting between you and them.</p>
+        <div class="num">Artists</div>
+        <p>Meet the people behind the work, each with their own dedicated space.</p>
+        <a href="artists.html" class="btn ghost small" style="margin-top:14px;">View artists &rarr;</a>
       </div>
       <div class="stat">
-        <div class="num">Independent</div>
-        <p>Every artist here is independent — no galleries, no middlemen, just the person who made the work.</p>
+        <div class="num">Gallery</div>
+        <p>Browse a curated selection of available work and enquire directly.</p>
+        <a href="gallery.html" class="btn ghost small" style="margin-top:14px;">Browse gallery &rarr;</a>
       </div>
       <div class="stat">
-        <div class="num">Known</div>
-        <p>Each artist has their own page telling you who made the work and what buyers thought.</p>
+        <div class="num">Buyers</div>
+        <p>New here? See how buying directly from an artist works.</p>
+        <a href="buyers.html" class="btn ghost small" style="margin-top:14px;">How it works &rarr;</a>
       </div>
     </div>
   </div>
@@ -149,32 +90,7 @@
     <span class="script for-artists-script">Selling your own work?</span>
     <h2>List your art on The Screen Gallery</h2>
     <p>If you're an artist and would like your work featured here, get in touch and I'll talk you through how it works.</p>
-    <a class="btn" id="artistContactBtn" href="#">Get in touch</a>
-  </div>
-</section>
-
-<section class="how" id="how">
-  <div class="container">
-    <div class="section-head">
-      <h2>How buying works</h2>
-    </div>
-    <div class="how-grid">
-      <div class="how-step">
-        <span class="mark">First</span>
-        <h3>Browse an artist's page</h3>
-        <p>Open any artist to see the pieces they currently have available, with prices.</p>
-      </div>
-      <div class="how-step">
-        <span class="mark">Then</span>
-        <h3>Buy securely at checkout</h3>
-        <p>"Buy now" takes you to a secure checkout page to complete your purchase. Have a question first? Use "Ask a question" to email the artist directly.</p>
-      </div>
-      <div class="how-step">
-        <span class="mark">Finally</span>
-        <h3>We'll be in touch</h3>
-        <p>Once your order is confirmed, we'll arrange delivery or collection with you directly.</p>
-      </div>
-    </div>
+    <a class="btn" href="contact.html">Get in touch</a>
   </div>
 </section>
 
@@ -186,35 +102,25 @@
 </footer>
 
 <script>
-  const SITE_CC_EMAIL = "youremail@email.com";
-  document.getElementById('artistContactBtn').href =
-    `mailto:${SITE_CC_EMAIL}?subject=${encodeURIComponent("I'd like to list my work on The Screen Gallery")}&body=${encodeURIComponent("Hi,\n\nI'm an artist and I'd like to find out about listing my work on The Screen Gallery.\n\nMy name:\nWhere I'm based:\nWhat I make:\n\nThanks,\n")}`;
-</script>
-
-<script>
   // ---- Paint-swipe hero -------------------------------------------------
-  // Edit this array to add/remove artists shown in the hero. "art" sets a
-  // background gradient for each slide until you swap in a real photo
-  // (just set background-image on .paint-slide-art via CSS per data-slide,
-  // or replace the gradient below with an <img>).
   const heroArtists = [
     {
       name: "Derek Slavin",
       tag: "Contemporary artist",
       href: "artists/derek-slavin.html",
-      art: "linear-gradient(135deg, #d9c9a8 0%, #c3ccc3 100%)"
+      art: "linear-gradient(135deg, #16283b 0%, #4f7570 100%)"
     },
     {
       name: "Artist 2",
       tag: "Contemporary artist",
       href: "artists/artist-2.html",
-      art: "linear-gradient(135deg, #c9d0bf 0%, #e6e0c8 100%)"
+      art: "linear-gradient(135deg, #4f7570 0%, #b9a888 100%)"
     },
     {
       name: "Artist 3",
       tag: "Contemporary artist",
       href: "artists/artist-3.html",
-      art: "linear-gradient(135deg, #e3ddc9 0%, #b8c2b3 100%)"
+      art: "linear-gradient(135deg, #0e1c2a 0%, #ab8a53 100%)"
     }
   ];
 
@@ -234,7 +140,7 @@
     let current = 0;
     let dragging = false;
     let startX = 0;
-    let dragPct = 0; // 0 to 1
+    let dragPct = 0;
     let hasInteracted = false;
 
     function paintFor(i){ return heroArtists[(i + heroArtists.length) % heroArtists.length]; }
@@ -248,9 +154,7 @@
       });
     }
 
-    function setSlideArt(el, artist){
-      el.querySelector('.paint-slide-art').style.background = artist.art;
-    }
+    function setSlideArt(el, artist){ el.querySelector('.paint-slide-art').style.background = artist.art; }
 
     function setInfo(artist, index){
       eyebrowEl.textContent = `Artist 0${index + 1}`;
@@ -260,7 +164,6 @@
       linkEl.href = artist.href;
     }
 
-    // Initial paint
     setSlideArt(slideA, paintFor(current));
     setSlideArt(slideB, paintFor(current + 1));
     setInfo(paintFor(current), current);
@@ -313,7 +216,6 @@
       }
     } catch(e){}
 
-    // Touch (mobile)
     hero.addEventListener('touchstart', (e) => {
       dragging = true;
       hero.classList.add('is-dragging');
@@ -329,7 +231,6 @@
 
     hero.addEventListener('touchend', finishDrag);
 
-    // Mouse drag (desktop)
     hero.addEventListener('mousedown', (e) => {
       dragging = true;
       hero.classList.add('is-dragging');
@@ -344,7 +245,6 @@
     });
     window.addEventListener('mouseup', () => { if (dragging) finishDrag(); });
 
-    // Click dots to jump directly
     dotsEl.addEventListener('click', (e) => {
       const dots = Array.from(dotsEl.children);
       const idx = dots.indexOf(e.target);
