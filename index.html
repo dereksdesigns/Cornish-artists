@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Screen Gallery</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Mrs+Saint+Delafield&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Petit+Formal+Script&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,9 +14,9 @@
   <div class="container nav">
     <div class="brand">The <em>Screen</em> Gallery</div>
     <nav class="links">
-      <a href="#artists">Artists</a>
-      <a href="#about">About</a>
-      <a href="#for-artists">For Artists</a>
+      <a href="index.html#artists">Artists</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#for-artists">For Artists</a>
     </nav>
   </div>
 </header>
@@ -50,15 +50,15 @@
     <div class="why-stats">
       <div class="stat">
         <div class="num">Direct</div>
-        <p>Every enquiry on this site goes straight to the artist — no gallery mark-up sitting between you and them.</p>
+        <p>Every purchase goes straight to the artist — no gallery mark-up sitting between you and them.</p>
       </div>
       <div class="stat">
-        <div class="num">Local</div>
+        <div class="num">Independent</div>
         <p>Every artist here is independent — no galleries, no middlemen, just the person who made the work.</p>
       </div>
       <div class="stat">
         <div class="num">Known</div>
-        <p>Each profile tells you who made the work, where, and what other buyers thought.</p>
+        <p>Each artist has their own page telling you who made the work and what buyers thought.</p>
       </div>
     </div>
   </div>
@@ -68,9 +68,38 @@
   <div class="container">
     <div class="section-head">
       <h2>Meet the artists</h2>
-      <p>Click through to an artist's page to see their available work, reviews, and get in touch.</p>
+      <p>Click through to an artist's page to see their available work, reviews, and how to buy.</p>
     </div>
-    <div class="artist-grid" id="artistGrid"></div>
+    <div class="artist-grid">
+
+      <a class="artist-card" href="artists/derek-slavin.html">
+        <div class="artist-photo">Photo</div>
+        <span class="loc">Location</span>
+        <h3>Derek Slavin</h3>
+        <span class="view">View gallery
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a class="artist-card" href="artists/artist-2.html">
+        <div class="artist-photo">Photo</div>
+        <span class="loc">Location</span>
+        <h3>Artist 2</h3>
+        <span class="view">View gallery
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a class="artist-card" href="artists/artist-3.html">
+        <div class="artist-photo">Photo</div>
+        <span class="loc">Location</span>
+        <h3>Artist 3</h3>
+        <span class="view">View gallery
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+    </div>
   </div>
 </section>
 
@@ -80,36 +109,6 @@
     <h2>List your art on The Screen Gallery</h2>
     <p>If you're an artist and would like your work featured here, get in touch and I'll talk you through how it works.</p>
     <a class="btn" id="artistContactBtn" href="#">Get in touch</a>
-  </div>
-</section>
-
-<section class="detail" id="detailPanel">
-  <div class="container detail-topbar">
-    <button class="back" id="backBtn">&larr; Back to all artists</button>
-  </div>
-
-  <div class="detail-hero" id="detailHero">
-    <div class="detail-hero-overlay"></div>
-    <div class="detail-hero-content">
-      <span class="detail-hero-name script" id="heroName">Name</span>
-      <span class="detail-hero-tag" id="heroTag">Location</span>
-      <a href="#detailWorks" class="btn ghost light">View available work</a>
-    </div>
-  </div>
-
-  <div class="detail-intro">
-    <span class="script detail-intro-name" id="introName">Name</span>
-    <p class="detail-intro-quote" id="introQuote">Bio goes here.</p>
-    <div class="reviews" id="detailReviews"></div>
-    <p class="contact-note">Every piece is sold securely at checkout. Questions can be sent directly to the artist by email.</p>
-  </div>
-
-  <div class="detail-works container" id="detailWorks">
-    <div class="section-head">
-      <h2>The Collection</h2>
-      <p>Available now</p>
-    </div>
-    <div class="work-grid" id="workGrid"></div>
   </div>
 </section>
 
@@ -145,7 +144,11 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  const SITE_CC_EMAIL = "youremail@email.com";
+  document.getElementById('artistContactBtn').href =
+    `mailto:${SITE_CC_EMAIL}?subject=${encodeURIComponent("I'd like to list my work on The Screen Gallery")}&body=${encodeURIComponent("Hi,\n\nI'm an artist and I'd like to find out about listing my work on The Screen Gallery.\n\nMy name:\nWhere I'm based:\nWhat I make:\n\nThanks,\n")}`;
+</script>
 
 </body>
 </html>
