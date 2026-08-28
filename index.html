@@ -5,10 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Screen Gallery</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="intro-overlay" id="introOverlay">
+  <div class="intro-noise" aria-hidden="true"></div>
+  <div class="intro-content">
+    <span class="intro-eyebrow">Welcome to</span>
+    <h1 class="intro-brand">The <em>Screen</em> Gallery</h1>
+    <p class="intro-tag">Art, curated on screen.</p>
+    <button class="btn ghost light" id="enterGalleryBtn">Enter Gallery</button>
+  </div>
+</div>
 
 <header>
   <div class="container nav">
@@ -22,6 +32,44 @@
     </nav>
   </div>
 </header>
+
+<section class="about-us" id="about">
+  <div class="container about-us-inner">
+    <span class="eyebrow-sm reveal">About us</span>
+    <h2 class="reveal">A gallery without walls</h2>
+    <p class="about-lede reveal">The Screen Gallery represents independent artists — we manage the platform, promote their work, and handle every sale, so they can focus on making it.</p>
+
+    <div class="about-tabs reveal" id="aboutTabs">
+      <button class="about-tab active" data-tab="0">Our Story</button>
+      <button class="about-tab" data-tab="1">How We Work</button>
+      <button class="about-tab" data-tab="2">For Buyers</button>
+    </div>
+
+    <div class="about-panels">
+      <p class="about-panel active" data-panel="0">The Screen Gallery is a digital gallery where independent artists' work reaches the people who'll love it. Behind every piece is someone who poured hours, doubt, and hope into making it — we help bring that work into the world, and into people's homes.</p>
+      <p class="about-panel" data-panel="1">We manage the website, handle every sale securely, and actively promote each artist's collection — including in person at exhibitions and galleries — to grow their audience of buyers. For this, The Screen Gallery takes a 30% commission on each sale; the artist keeps 70%.</p>
+      <p class="about-panel" data-panel="2">Every enquiry and purchase is handled directly through The Screen Gallery, so you can buy with confidence. Each artist's page tells you who made the work, where, and what other buyers thought.</p>
+    </div>
+
+    <div class="about-links reveal">
+      <a href="artists.html" class="about-link-card">
+        <span class="num">Artists</span>
+        <p>Meet the people behind the work.</p>
+        <span class="go">View artists &rarr;</span>
+      </a>
+      <a href="gallery.html" class="about-link-card">
+        <span class="num">Gallery</span>
+        <p>Browse available work and enquire.</p>
+        <span class="go">Browse gallery &rarr;</span>
+      </a>
+      <a href="buyers.html" class="about-link-card">
+        <span class="num">Buyers</span>
+        <p>New here? See how buying works.</p>
+        <span class="go">How it works &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section class="paint-hero" id="paintHero">
   <div class="paint-noise" aria-hidden="true"></div>
@@ -57,34 +105,6 @@
   <span class="swipe-hint" id="swipeHint">Swipe to discover &rarr;</span>
 </section>
 
-<section class="why" id="about">
-  <div class="container why-grid">
-    <div class="why-copy">
-      <span class="script" style="font-size:22px; display:block; margin-bottom:10px;">A gallery without walls</span>
-      <h2>What The Screen Gallery is</h2>
-      <p>The Screen Gallery is a digital gallery where independent artists sell original work directly to buyers. Behind every piece is someone who poured hours, doubt, and hope into making it. We just help you find them — no gallery mark-up, no middlemen, just the work and the person who made it.</p>
-      <p>I started this because talented artists are too often shut out by limited gallery space, steep commission rates, and the hassle of building their own online store. This is a simpler way for artists to sell directly, and for buyers to know exactly whose work they're bringing home.</p>
-    </div>
-    <div class="why-stats">
-      <div class="stat">
-        <div class="num">Artists</div>
-        <p>Meet the people behind the work, each with their own dedicated space.</p>
-        <a href="artists.html" class="btn ghost small" style="margin-top:14px;">View artists &rarr;</a>
-      </div>
-      <div class="stat">
-        <div class="num">Gallery</div>
-        <p>Browse a curated selection of available work and enquire directly.</p>
-        <a href="gallery.html" class="btn ghost small" style="margin-top:14px;">Browse gallery &rarr;</a>
-      </div>
-      <div class="stat">
-        <div class="num">Buyers</div>
-        <p>New here? See how buying directly from an artist works.</p>
-        <a href="buyers.html" class="btn ghost small" style="margin-top:14px;">How it works &rarr;</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="for-artists" id="for-artists">
   <div class="container for-artists-inner">
     <span class="script for-artists-script">Selling your own work?</span>
@@ -100,6 +120,66 @@
     <p>&copy; 2026 The Screen Gallery. All artwork remains the property of the artist.</p>
   </div>
 </footer>
+
+<script>
+  // ---- About Us: tab switching + scroll reveal --------------------------
+  (function initAbout(){
+    const tabs = document.querySelectorAll('.about-tab');
+    const panels = document.querySelectorAll('.about-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelector(`.about-panel[data-panel="${tab.dataset.tab}"]`).classList.add('active');
+      });
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && revealEls.length) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach(el => io.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add('in-view'));
+    }
+  })();
+</script>
+
+<script>
+  // ---- Welcome intro overlay --------------------------------------------
+  (function initIntro(){
+    const overlay = document.getElementById('introOverlay');
+    const btn = document.getElementById('enterGalleryBtn');
+    if (!overlay || !btn) return;
+
+    let alreadySeen = false;
+    try { alreadySeen = sessionStorage.getItem('tsg-intro-seen') === '1'; } catch(e){}
+
+    if (alreadySeen) {
+      overlay.classList.add('hide');
+      document.body.style.overflow = '';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+
+    function enter(){
+      overlay.classList.add('hide');
+      document.body.style.overflow = '';
+      try { sessionStorage.setItem('tsg-intro-seen', '1'); } catch(e){}
+      setTimeout(() => { overlay.style.display = 'none'; }, 700);
+    }
+
+    btn.addEventListener('click', enter);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) enter(); });
+  })();
+</script>
 
 <script>
   // ---- Paint-swipe hero -------------------------------------------------
