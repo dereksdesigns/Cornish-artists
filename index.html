@@ -132,10 +132,37 @@
   </div>
 </section>
 
+<section class="newsletter">
+  <div class="container newsletter-inner">
+    <span class="script" style="font-size:26px; display:block; margin-bottom:10px;">Stay in the loop</span>
+    <h2>New work, every month.</h2>
+    <p>Get the latest pieces from our artists dropped straight into your inbox — no spam, just new art and a direct link to buy.</p>
+
+    <!--
+      HOW TO CONNECT THIS FORM TO MAILCHIMP:
+      1. Create a free account at mailchimp.com and set up an Audience.
+      2. In Mailchimp, go to Audience > Signup forms > Embedded forms.
+      3. Copy the "action" URL from the <form> tag they give you
+         (it looks like: https://yourname.usXX.list-manage.com/subscribe/post?u=XXXX&id=XXXX)
+      4. Paste that URL into the form action="" below, replacing the placeholder.
+      5. Also copy their hidden "bot-field" input (starts with b_) and paste it
+         in place of the example one below, with YOUR unique values.
+    -->
+    <form action="https://PASTE-YOUR-MAILCHIMP-URL-HERE" method="post" target="_blank" class="newsletter-form">
+      <input type="email" name="EMAIL" placeholder="Your email address" required>
+      <!-- Mailchimp anti-bot field — replace name/id with the one Mailchimp gives you -->
+      <div style="position:absolute; left:-5000px;" aria-hidden="true">
+        <input type="text" name="b_XXXXXXXXXXXXXXXXXXXXXXXXX_XXXXXXXXXX" tabindex="-1" value="">
+      </div>
+      <button type="submit" class="btn">Subscribe</button>
+    </form>
+  </div>
+</section>
+
 <footer>
   <div class="container footer-grid">
     <div class="brand">The <em>Screen</em> Gallery</div>
-    <p>&copy; 2026 The Screen Gallery. All artwork remains the property of the artist.</p>
+    <p>&copy; 2026 The Screen Gallery. All artwork remains the property of the artist. <a href="terms.html" style="text-decoration:underline; color:inherit;">Terms & Policies</a></p>
   </div>
 </footer>
 
@@ -291,7 +318,7 @@
       dragging = false;
       hero.classList.remove('is-dragging');
       const elapsed = Math.max(1, Date.now() - startTime);
-      const velocity = dragPct / (elapsed / 1000);
+      const velocity = dragPct / (elapsed / 1000); // fraction of width per second
       if (dragPct > 0.28 || (dragPct > 0.06 && velocity > 0.5)) {
         completeAdvance();
       } else {
