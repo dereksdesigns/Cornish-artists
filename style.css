@@ -161,7 +161,7 @@ nav.links a:hover, nav.links a:focus-visible, nav.links a.current{opacity:1;}
 
 /* ---------- Paint-swipe hero (homepage) ---------- */
 .paint-hero{
-  position:relative; width:100%; height:88vh; min-height:520px; max-height:820px;
+  position:relative; width:100%; height:48vh; min-height:360px; max-height:480px;
   overflow:hidden; background:var(--ink); touch-action:pan-y; cursor:grab; user-select:none;
 }
 .paint-hero.is-dragging{cursor:grabbing;}
@@ -177,20 +177,20 @@ nav.links a:hover, nav.links a:focus-visible, nav.links a.current{opacity:1;}
   position:absolute; inset:0; z-index:6; display:flex; align-items:flex-end; pointer-events:none;
   background:linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%);
 }
-.paint-overlay-inner{width:100%; padding-bottom:64px; pointer-events:auto;}
-.paint-eyebrow{font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--linen); opacity:0.8; display:block; margin-bottom:12px;}
-.paint-name{font-family:'EB Garamond', serif; font-weight:600; color:var(--linen); font-size:clamp(38px, 7vw, 76px); line-height:1; margin:0;}
-.paint-tag{color:var(--linen); opacity:0.85; font-size:15px; margin:12px 0 20px;}
-.paint-link{color:var(--linen); text-decoration:none; font-size:13px; letter-spacing:0.08em; text-transform:uppercase; border-bottom:1px solid var(--linen); padding-bottom:3px;}
-.paint-dots{position:absolute; bottom:28px; right:32px; z-index:7; display:flex; gap:10px; cursor:pointer;}
-.paint-dot{width:8px; height:8px; border-radius:50%; background:rgba(247,244,236,0.4); transition:background .2s, transform .2s;}
+.paint-overlay-inner{width:100%; padding-bottom:32px; pointer-events:auto;}
+.paint-eyebrow{font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--linen); opacity:0.8; display:block; margin-bottom:8px;}
+.paint-name{font-family:'EB Garamond', serif; font-weight:600; color:var(--linen); font-size:clamp(26px, 4.5vw, 46px); line-height:1; margin:0;}
+.paint-tag{color:var(--linen); opacity:0.85; font-size:13px; margin:8px 0 14px;}
+.paint-link{color:var(--linen); text-decoration:none; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; border-bottom:1px solid var(--linen); padding-bottom:3px;}
+.paint-dots{position:absolute; bottom:16px; right:24px; z-index:7; display:flex; gap:8px; cursor:pointer;}
+.paint-dot{width:6px; height:6px; border-radius:50%; background:rgba(247,244,236,0.4); transition:background .2s, transform .2s;}
 .paint-dot.active{background:var(--linen); transform:scale(1.3);}
-.swipe-hint{position:absolute; top:28px; right:32px; z-index:7; color:var(--linen); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.85; transition:opacity .4s;}
+.swipe-hint{position:absolute; top:16px; right:24px; z-index:7; color:var(--linen); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.85; transition:opacity .4s;}
 .swipe-hint.hidden{opacity:0; pointer-events:none;}
 @media(max-width:640px){
-  .paint-hero{height:78vh;}
-  .swipe-hint{top:auto; bottom:28px; left:20px; right:auto;}
-  .paint-dots{bottom:28px; right:20px;}
+  .paint-hero{height:42vh; min-height:320px;}
+  .swipe-hint{top:auto; bottom:16px; left:16px; right:auto;}
+  .paint-dots{bottom:16px; right:16px;}
 }
 
 /* ---------- Section scaffolding ---------- */
