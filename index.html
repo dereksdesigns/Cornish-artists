@@ -194,7 +194,7 @@
       name: "Derek Slavin",
       tag: "Contemporary artist",
       href: "artists/derek-slavin.html",
-      art: "linear-gradient(135deg, #16283b 0%, #4f7570 100%)"
+      photo: "IMG_5386.jpeg"
     },
     {
       name: "Artist 2",
@@ -240,7 +240,16 @@
       });
     }
 
-    function setSlideArt(el, artist){ el.querySelector('.paint-slide-art').style.background = artist.art; }
+    function setSlideArt(el, artist){
+      const holder = el.querySelector('.paint-slide-art');
+      if (artist.photo) {
+        holder.style.background = '';
+        holder.innerHTML = `<img src="${artist.photo}" alt="${artist.name}">`;
+      } else {
+        holder.innerHTML = '';
+        holder.style.background = artist.art;
+      }
+    }
 
     function setInfo(artist, index){
       eyebrowEl.textContent = `Artist 0${index + 1}`;
