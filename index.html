@@ -207,14 +207,6 @@
   // ---- Paint-swipe hero -------------------------------------------------
   const heroArtists = [
     {
-      <a class="exhibit-card" href="artists/derek-slavin.html">
-  <div class="exhibit-art"><img src="IMG_5386.jpeg" alt="Derek Slavin"></div>
-  <div class="exhibit-info">
-    <h3>Derek Slavin</h3>
-    <span class="exhibit-enter">Enter exhibition &rarr;</span>
-  </div>
-</a>
-
       name: "Derek Slavin",
       tag: "Contemporary artist",
       href: "artists/derek-slavin.html",
@@ -299,7 +291,7 @@
       dragging = false;
       hero.classList.remove('is-dragging');
       const elapsed = Math.max(1, Date.now() - startTime);
-      const velocity = dragPct / (elapsed / 1000); // fraction of width per second
+      const velocity = dragPct / (elapsed / 1000);
       if (dragPct > 0.28 || (dragPct > 0.06 && velocity > 0.5)) {
         completeAdvance();
       } else {
