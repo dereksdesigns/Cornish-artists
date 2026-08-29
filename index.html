@@ -12,10 +12,12 @@
 
 <div class="intro-overlay" id="introOverlay">
   <div class="intro-noise" aria-hidden="true"></div>
+  <div class="door-leaf door-left" id="doorLeft"><span class="door-handle-mark"></span></div>
+  <div class="door-leaf door-right" id="doorRight"><span class="door-handle-mark"></span></div>
   <div class="intro-content">
     <span class="intro-eyebrow">Welcome to</span>
     <h1 class="intro-brand">The <em>Screen</em> Gallery</h1>
-    <p class="intro-tag">Art, curated on screen.</p>
+    <p class="intro-tag">Real art. Real artists. No walls.</p>
     <button class="btn ghost light" id="enterGalleryBtn">Enter Gallery</button>
   </div>
 </div>
@@ -40,15 +42,15 @@
     <p class="about-lede reveal">The Screen Gallery represents independent artists — we manage the platform, promote their work, and handle every sale, so they can focus on making it.</p>
 
     <div class="about-tabs reveal" id="aboutTabs">
-      <button class="about-tab active" data-tab="0">Our Story</button>
-      <button class="about-tab" data-tab="1">How We Work</button>
-      <button class="about-tab" data-tab="2">For Buyers</button>
+      <button class="about-tab active" data-tab="0">Real Art</button>
+      <button class="about-tab" data-tab="1">Real Artists</button>
+      <button class="about-tab" data-tab="2">No Walls</button>
     </div>
 
     <div class="about-panels">
-      <p class="about-panel active" data-panel="0">The Screen Gallery is a digital gallery where independent artists' work reaches the people who'll love it. Behind every piece is someone who poured hours, doubt, and hope into making it — we help bring that work into the world, and into people's homes.</p>
-      <p class="about-panel" data-panel="1">We manage the website, handle every sale securely, and actively promote each artist's collection — including in person at exhibitions and galleries — to grow their audience of buyers. For this, The Screen Gallery takes a 30% commission on each sale; the artist keeps 70%.</p>
-      <p class="about-panel" data-panel="2">Every enquiry and purchase is handled directly through The Screen Gallery, so you can buy with confidence. Each artist's page tells you who made the work, where, and what other buyers thought.</p>
+      <p class="about-panel active" data-panel="0">Every piece in our gallery is original — abstract, coastal-inspired, hand-made work born from real experience, texture, and story. This isn't stock art or prints; it's art made by people who've lived the moments behind it, and you can feel that in every brushstroke.</p>
+      <p class="about-panel" data-panel="1">We work with independent artists — people who've turned careers, setbacks, and lifelong passions into a body of work. The Screen Gallery helps them reach buyers they wouldn't otherwise find, handling the website, sales, and promotion, so they can focus on what they do best: creating.</p>
+      <p class="about-panel" data-panel="2">Traditional galleries come with real barriers — expensive wall space, steep commission rates, and limited visibility. The Screen Gallery removes those walls: lower costs, wider exposure, and a platform that's genuinely accessible to any independent artist ready to share their work with the world.</p>
     </div>
 
     <div class="about-links reveal">
@@ -170,10 +172,14 @@
     }
 
     function enter(){
-      overlay.classList.add('hide');
-      document.body.style.overflow = '';
+      if (overlay.classList.contains('opening')) return;
+      overlay.classList.add('opening');
       try { sessionStorage.setItem('tsg-intro-seen', '1'); } catch(e){}
-      setTimeout(() => { overlay.style.display = 'none'; }, 700);
+      setTimeout(() => {
+        overlay.classList.add('hide');
+        document.body.style.overflow = '';
+      }, 900);
+      setTimeout(() => { overlay.style.display = 'none'; }, 1600);
     }
 
     btn.addEventListener('click', enter);
