@@ -107,6 +107,22 @@
   <span class="swipe-hint" id="swipeHint">Swipe to discover &rarr;</span>
 </section>
 
+<section class="look-strip">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow-sm">A closer look</span>
+      <h2>Recent work</h2>
+    </div>
+  </div>
+  <div class="look-row">
+    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
+    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
+    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
+    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
+    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
+  </div>
+</section>
+
 <section class="for-artists" id="for-artists">
   <div class="container for-artists-inner">
     <span class="script for-artists-script">Selling your own work?</span>
@@ -226,6 +242,7 @@
     let current = 0;
     let dragging = false;
     let startX = 0;
+    let startTime = 0;
     let dragPct = 0;
     let hasInteracted = false;
 
@@ -273,7 +290,9 @@
     function finishDrag(){
       dragging = false;
       hero.classList.remove('is-dragging');
-      if (dragPct > 0.28) {
+      const elapsed = Math.max(1, Date.now() - startTime);
+      const velocity = dragPct / (elapsed / 1000); // fraction of width per second
+      if (dragPct > 0.28 || (dragPct > 0.06 && velocity > 0.5)) {
         completeAdvance();
       } else {
         slideB.style.transition = 'transform .5s cubic-bezier(.22,.61,.36,1)';
@@ -315,6 +334,7 @@
       dragging = true;
       hero.classList.add('is-dragging');
       startX = e.touches[0].clientX;
+      startTime = Date.now();
     }, { passive: true });
 
     hero.addEventListener('touchmove', (e) => {
@@ -330,6 +350,7 @@
       dragging = true;
       hero.classList.add('is-dragging');
       startX = e.clientX;
+      startTime = Date.now();
       e.preventDefault();
     });
     window.addEventListener('mousemove', (e) => {
