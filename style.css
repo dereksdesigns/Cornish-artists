@@ -153,6 +153,27 @@ nav.links a:hover, nav.links a:focus-visible, nav.links a.current{opacity:1;}
 .about-link-card p{color:var(--mid); font-size:14px; margin:6px 0 10px;}
 .about-link-card .go{font-size:12px; letter-spacing:0.08em; text-transform:uppercase; text-decoration:underline;}
 
+/* ---------- Look strip (side-by-side photo row, homepage) ---------- */
+.look-strip{padding:76px 0 84px; border-bottom:1px solid var(--line);}
+.look-row{
+  display:flex; gap:16px; overflow-x:auto; padding:6px 32px 14px;
+  scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;
+}
+.look-row::-webkit-scrollbar{display:none;}
+.look-item{
+  flex:0 0 auto; scroll-snap-align:start; display:block;
+  border-radius:20px; overflow:hidden; width:64vw; max-width:300px;
+}
+.look-item:nth-child(2n){margin-top:26px;}
+.look-art{
+  width:100%; aspect-ratio:3/4;
+  background:repeating-linear-gradient(135deg, var(--sand), var(--sand) 10px, #ddd2b6 10px, #ddd2b6 20px);
+  transition:transform .4s ease;
+}
+.look-art img{width:100%; height:100%; object-fit:cover;}
+.look-item:hover .look-art{transform:scale(1.03);}
+@media(min-width:900px){.look-item{width:250px;}}
+
 /* ---------- Page hero (used on inner pages) ---------- */
 .page-hero{padding:80px 0 56px; border-bottom:1px solid var(--line); background:var(--sand);}
 .page-hero .eyebrow{font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--mid); margin-bottom:16px; display:block;}
