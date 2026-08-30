@@ -4,9 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Screen Gallery</title>
+<meta name="description" content="An online gallery representing independent artists. Browse original art, meet the artists, and buy directly — no gallery walls required.">
+<meta property="og:title" content="The Screen Gallery">
+<meta property="og:description" content="An online gallery representing independent artists. Browse original art, meet the artists, and buy directly — no gallery walls required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thescreengallery.shop/index.html">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
+<!-- Google Analytics — replace G-XXXXXXXXXX with your real GA4 Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OnlineStore",
+  "name": "The Screen Gallery",
+  "url": "https://thescreengallery.shop",
+  "description": "An online gallery representing independent artists, selling original artwork directly to buyers.",
+  "email": "thescreengallery.shop@gmail.com"
+}
+</script>
 </head>
 <body>
 
@@ -87,7 +113,7 @@
       <span class="paint-eyebrow" id="paintEyebrow">Artist 01</span>
       <h1 class="paint-name" id="paintName">Derek Slavin</h1>
       <p class="paint-tag" id="paintTag">Contemporary artist</p>
-      <a class="paint-link door-nav" id="paintLink" href="artists/derek-slavin.html">Explore Derek's work &rarr;</a>
+      <a class="paint-link" id="paintLink" href="artists/derek-slavin.html">Explore Derek's work &rarr;</a>
     </div>
   </div>
 
@@ -154,26 +180,7 @@
   </div>
 </footer>
 
-<div class="door-transition" id="doorTransition">
-  <div class="leaf left"></div>
-  <div class="leaf right"></div>
-</div>
 
-<script>
-  // ---- Door transition: closes, then navigates into the exhibition ------
-  (function initDoorNav(){
-    const overlay = document.getElementById('doorTransition');
-    if (!overlay) return;
-    document.querySelectorAll('.door-nav').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const href = link.getAttribute('href');
-        overlay.classList.add('closed');
-        setTimeout(() => { window.location.href = href; }, 620);
-      });
-    });
-  })();
-</script>
 
 <script>
   // ---- About Us: tab switching + scroll reveal --------------------------
@@ -378,6 +385,12 @@
     });
   })();
 </script>
+
+
+<div class="sticky-cta">
+  <a href="gallery.html">Browse Gallery</a>
+  <a href="contact.html" class="primary">Get In Touch</a>
+</div>
 
 </body>
 </html>
