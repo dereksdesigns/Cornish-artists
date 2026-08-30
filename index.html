@@ -10,18 +10,6 @@
 </head>
 <body>
 
-<div class="intro-overlay" id="introOverlay">
-  <div class="intro-noise" aria-hidden="true"></div>
-  <div class="door-leaf door-left" id="doorLeft"><span class="door-handle-mark"></span></div>
-  <div class="door-leaf door-right" id="doorRight"><span class="door-handle-mark"></span></div>
-  <div class="intro-content">
-    <span class="intro-eyebrow">Welcome to</span>
-    <h1 class="intro-brand">The <em>Screen</em> Gallery</h1>
-    <p class="intro-tag">Real art. Real artists. No walls.</p>
-    <button class="btn ghost light" id="enterGalleryBtn">Enter Gallery</button>
-  </div>
-</div>
-
 <header>
   <div class="container nav">
     <div class="brand">The <em>Screen</em> Gallery</div>
@@ -99,7 +87,7 @@
       <span class="paint-eyebrow" id="paintEyebrow">Artist 01</span>
       <h1 class="paint-name" id="paintName">Derek Slavin</h1>
       <p class="paint-tag" id="paintTag">Contemporary artist</p>
-      <a class="paint-link" id="paintLink" href="artists/derek-slavin.html">Explore Derek's work &rarr;</a>
+      <a class="paint-link door-nav" id="paintLink" href="artists/derek-slavin.html">Explore Derek's work &rarr;</a>
     </div>
   </div>
 
@@ -166,6 +154,27 @@
   </div>
 </footer>
 
+<div class="door-transition" id="doorTransition">
+  <div class="leaf left"></div>
+  <div class="leaf right"></div>
+</div>
+
+<script>
+  // ---- Door transition: closes, then navigates into the exhibition ------
+  (function initDoorNav(){
+    const overlay = document.getElementById('doorTransition');
+    if (!overlay) return;
+    document.querySelectorAll('.door-nav').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        overlay.classList.add('closed');
+        setTimeout(() => { window.location.href = href; }, 620);
+      });
+    });
+  })();
+</script>
+
 <script>
   // ---- About Us: tab switching + scroll reveal --------------------------
   (function initAbout(){
@@ -194,39 +203,6 @@
     } else {
       revealEls.forEach(el => el.classList.add('in-view'));
     }
-  })();
-</script>
-
-<script>
-  // ---- Welcome intro overlay --------------------------------------------
-  (function initIntro(){
-    const overlay = document.getElementById('introOverlay');
-    const btn = document.getElementById('enterGalleryBtn');
-    if (!overlay || !btn) return;
-
-    let alreadySeen = false;
-    try { alreadySeen = sessionStorage.getItem('tsg-intro-seen') === '1'; } catch(e){}
-
-    if (alreadySeen) {
-      overlay.classList.add('hide');
-      document.body.style.overflow = '';
-    } else {
-      document.body.style.overflow = 'hidden';
-    }
-
-    function enter(){
-      if (overlay.classList.contains('opening')) return;
-      overlay.classList.add('opening');
-      try { sessionStorage.setItem('tsg-intro-seen', '1'); } catch(e){}
-      setTimeout(() => {
-        overlay.classList.add('hide');
-        document.body.style.overflow = '';
-      }, 900);
-      setTimeout(() => { overlay.style.display = 'none'; }, 1600);
-    }
-
-    btn.addEventListener('click', enter);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) enter(); });
   })();
 </script>
 
