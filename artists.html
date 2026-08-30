@@ -35,7 +35,7 @@
   <div class="container">
     <div class="exhibit-grid">
 
-      <a class="exhibit-card" href="artists/derek-slavin.html">
+      <a class="exhibit-card door-nav" href="artists/derek-slavin.html">
         <div class="exhibit-art"><img src="IMG_5386.jpeg" alt="Derek Slavin"></div>
         <div class="exhibit-info">
           <h3>Derek Slavin</h3>
@@ -43,7 +43,7 @@
         </div>
       </a>
 
-      <a class="exhibit-card" href="artists/artist-2.html">
+      <a class="exhibit-card door-nav" href="artists/artist-2.html">
         <div class="exhibit-art"></div>
         <div class="exhibit-info">
           <h3>Artist 2</h3>
@@ -51,7 +51,7 @@
         </div>
       </a>
 
-      <a class="exhibit-card" href="artists/artist-3.html">
+      <a class="exhibit-card door-nav" href="artists/artist-3.html">
         <div class="exhibit-art"></div>
         <div class="exhibit-info">
           <h3>Artist 3</h3>
@@ -78,6 +78,27 @@
     <p>&copy; 2026 The Screen Gallery. All artwork remains the property of the artist. <a href="terms.html" style="text-decoration:underline; color:inherit;">Terms & Policies</a></p>
   </div>
 </footer>
+
+<div class="door-transition" id="doorTransition">
+  <div class="leaf left"></div>
+  <div class="leaf right"></div>
+</div>
+
+<script>
+  // ---- Door transition: closes, then navigates into the exhibition ------
+  (function initDoorNav(){
+    const overlay = document.getElementById('doorTransition');
+    if (!overlay) return;
+    document.querySelectorAll('.door-nav').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        overlay.classList.add('closed');
+        setTimeout(() => { window.location.href = href; }, 620);
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
