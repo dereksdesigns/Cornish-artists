@@ -4,16 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Artist 2 — The Screen Gallery</title>
+<meta name="description" content="Original artwork by Artist 2, available now through The Screen Gallery.">
+<meta property="og:title" content="Artist 2 — The Screen Gallery">
+<meta property="og:description" content="Original artwork by Artist 2, available now through The Screen Gallery.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thescreengallery.shop/artists/artist-2.html">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
+
+<!-- Google Analytics — replace G-XXXXXXXXXX with your real GA4 Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 </head>
 <body>
 
-<div class="door-transition closed" id="doorTransition">
-  <div class="leaf left"></div>
-  <div class="leaf right"></div>
-</div>
 
 <header>
   <div class="container nav">
@@ -29,7 +40,8 @@
 </header>
 
 <div class="container detail-topbar">
-  <a class="back door-nav" href="../artists.html">&larr; Back to all artists</a>
+  <div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="../artists.html">Artists</a><span>/</span>Artist 2</div>
+  <a class="back" href="../artists.html">&larr; Back to all artists</a>
 </div>
 
 <div class="detail-hero">
@@ -89,24 +101,76 @@
   </div>
 </footer>
 
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">&larr;</button>
+  <div class="lightbox-frame" id="lightboxFrame"></div>
+  <div class="lightbox-caption">
+    <h4 id="lightboxTitle"></h4>
+    <div class="price" id="lightboxPrice"></div>
+  </div>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">&rarr;</button>
+</div>
+
 <script>
-  // ---- Door transition: opens on arrival, closes again when leaving -----
-  (function initDoorNav(){
-    const overlay = document.getElementById('doorTransition');
-    if (!overlay) return;
-    requestAnimationFrame(() => {
-      setTimeout(() => { overlay.classList.remove('closed'); }, 120);
+  // ---- Zoom lightbox: click a painting to view it up close ---------------
+  (function initLightbox(){
+    const cards = Array.from(document.querySelectorAll('.work-card'));
+    if (!cards.length) return;
+    const lightbox = document.getElementById('lightbox');
+    const frame = document.getElementById('lightboxFrame');
+    const titleEl = document.getElementById('lightboxTitle');
+    const priceEl = document.getElementById('lightboxPrice');
+    let current = 0;
+
+    function render(i){
+      current = (i + cards.length) % cards.length;
+      const card = cards[current];
+      const img = card.querySelector('.work-photo img');
+      const title = card.querySelector('h4') ? card.querySelector('h4').textContent : '';
+      const price = card.querySelector('.price') ? card.querySelector('.price').textContent : '';
+      frame.innerHTML = img
+        ? '<img class="lightbox-img" src="' + img.getAttribute('src') + '" alt="' + title + '">'
+        : '<div class="lightbox-placeholder"></div>';
+      titleEl.textContent = title;
+      priceEl.textContent = price;
+    }
+
+    function openBox(i){
+      render(i);
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeBox(){
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    cards.forEach((card, i) => {
+      const photo = card.querySelector('.work-photo');
+      if (photo) photo.addEventListener('click', () => openBox(i));
     });
-    document.querySelectorAll('.door-nav').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const href = link.getAttribute('href');
-        overlay.classList.add('closed');
-        setTimeout(() => { window.location.href = href; }, 620);
-      });
+
+    document.getElementById('lightboxClose').addEventListener('click', closeBox);
+    document.getElementById('lightboxPrev').addEventListener('click', () => render(current - 1));
+    document.getElementById('lightboxNext').addEventListener('click', () => render(current + 1));
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeBox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeBox();
+      if (e.key === 'ArrowLeft') render(current - 1);
+      if (e.key === 'ArrowRight') render(current + 1);
     });
   })();
 </script>
+
+
+<div class="sticky-cta">
+  <a href="#collection">View Work</a>
+  <a href="../contact.html" class="primary">Get In Touch</a>
+</div>
 
 </body>
 </html>
