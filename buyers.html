@@ -4,9 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Buyers — The Screen Gallery</title>
+<meta name="description" content="How buying original art through The Screen Gallery works, and why buying direct from independent artists matters.">
+<meta property="og:title" content="For Buyers — The Screen Gallery">
+<meta property="og:description" content="How buying original art through The Screen Gallery works, and why buying direct from independent artists matters.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thescreengallery.shop/buyers.html">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
+<!-- Google Analytics — replace G-XXXXXXXXXX with your real GA4 Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 </head>
 <body>
 
@@ -25,6 +40,7 @@
 
 <section class="page-hero">
   <div class="container">
+    <div class="breadcrumbs"><a href="index.html">Home</a><span>/</span>Buyers</div>
     <span class="eyebrow">For buyers</span>
     <h1>Buying directly, done simply.</h1>
     <p class="lede">No account, no middlemen — just you, the artist, and the piece you love.</p>
@@ -79,12 +95,42 @@
   </div>
 </section>
 
+<section class="faq">
+  <div class="container">
+    <div class="section-head">
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="faq-item">
+      <h3>How do I buy a piece?</h3>
+      <p>Browse the <a href="gallery.html" style="text-decoration:underline;">Gallery</a> or an artist's page and click "Enquire to buy." This opens an email to us with the piece already noted — we'll reply with payment details.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How is my piece shipped?</h3>
+      <p>Each piece is shipped directly by the artist using a tracked and signed-for delivery service, with tracking details emailed to you once dispatched.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I return a piece if I change my mind?</h3>
+      <p>Yes — under UK consumer law you have a 14-day statutory right to return most online purchases. See our <a href="terms.html" style="text-decoration:underline;">Terms & Policies</a> for full details.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How quickly will I hear back?</h3>
+      <p>We aim to respond to every enquiry within 24 hours.</p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="container footer-grid">
     <div class="brand">The <em>Screen</em> Gallery</div>
     <p>&copy; 2026 The Screen Gallery. All artwork remains the property of the artist. <a href="terms.html" style="text-decoration:underline; color:inherit;">Terms & Policies</a></p>
   </div>
 </footer>
+
+
+<div class="sticky-cta">
+  <a href="gallery.html">Browse Gallery</a>
+  <a href="contact.html" class="primary">Get In Touch</a>
+</div>
 
 </body>
 </html>
