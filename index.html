@@ -89,7 +89,6 @@
 
 <section class="owner">
   <div class="container owner-inner">
-    <div class="owner-photo"></div>
     <div class="owner-text">
       <span class="eyebrow-sm">From the founder</span>
       <h2>Hi, I'm Maggie Kent</h2>
@@ -99,53 +98,26 @@
   </div>
 </section>
 
-<section class="paint-hero" id="paintHero">
-  <div class="paint-noise" aria-hidden="true"></div>
-
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <clipPath id="brushClip" clipPathUnits="objectBoundingBox">
-        <path d="M0.07,0 C0.05,0.05 0.09,0.09 0.04,0.14 C0,0.18 0.08,0.22 0.05,0.27
-                 C0.02,0.32 0.09,0.36 0.06,0.41 C0.03,0.46 0.08,0.5 0.04,0.55
-                 C0,0.6 0.09,0.64 0.05,0.69 C0.02,0.74 0.08,0.78 0.05,0.83
-                 C0.02,0.88 0.07,0.94 0.06,1 L1,1 L1,0 Z"/>
-      </clipPath>
-    </defs>
-  </svg>
-
-  <div class="paint-slide" data-slide="0">
-    <div class="paint-slide-art"></div>
-  </div>
-  <div class="paint-slide paint-slide-next" data-slide="1">
-    <div class="paint-slide-art"></div>
-  </div>
-
-  <div class="paint-overlay">
-    <div class="container paint-overlay-inner">
-      <span class="paint-eyebrow" id="paintEyebrow">Artist 01</span>
-      <h1 class="paint-name" id="paintName">Derek Slavin</h1>
-      <p class="paint-tag" id="paintTag">Contemporary artist</p>
-      <a class="paint-link" id="paintLink" href="artists/derek-slavin.html">Explore Derek's work &rarr;</a>
-    </div>
-  </div>
-
-  <div class="paint-dots" id="paintDots"></div>
-  <span class="swipe-hint" id="swipeHint">Swipe to discover &rarr;</span>
-</section>
-
 <section class="look-strip">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow-sm">A closer look</span>
-      <h2>Recent work</h2>
+      <span class="eyebrow-sm">Meet the artists</span>
+      <h2>Discover Artists</h2>
     </div>
   </div>
   <div class="look-row">
-    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
-    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
-    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
-    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
-    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
+    <a class="look-item" href="artists/derek-slavin.html">
+      <div class="look-art"><img src="IMG_5386.jpeg" alt="Derek Slavin"></div>
+      <div class="look-caption"><span>Derek Slavin</span></div>
+    </a>
+    <a class="look-item" href="artists/artist-2.html">
+      <div class="look-art"></div>
+      <div class="look-caption"><span>Artist 2</span></div>
+    </a>
+    <a class="look-item" href="artists/artist-3.html">
+      <div class="look-art"></div>
+      <div class="look-caption"><span>Artist 3</span></div>
+    </a>
   </div>
 </section>
 
@@ -225,178 +197,6 @@
   })();
 </script>
 
-<script>
-  // ---- Paint-swipe hero -------------------------------------------------
-  const heroArtists = [
-    {
-      name: "Derek Slavin",
-      tag: "Contemporary artist",
-      href: "artists/derek-slavin.html",
-      photo: "IMG_5386.jpeg"
-    },
-    {
-      name: "Artist 2",
-      tag: "Contemporary artist",
-      href: "artists/artist-2.html",
-      art: "linear-gradient(135deg, #4f7570 0%, #b9a888 100%)"
-    },
-    {
-      name: "Artist 3",
-      tag: "Contemporary artist",
-      href: "artists/artist-3.html",
-      art: "linear-gradient(135deg, #0e1c2a 0%, #ab8a53 100%)"
-    }
-  ];
-
-  (function initPaintHero(){
-    const hero = document.getElementById('paintHero');
-    if (!hero) return;
-
-    const slideA = hero.querySelector('[data-slide="0"]');
-    const slideB = hero.querySelector('[data-slide="1"]');
-    const dotsEl = document.getElementById('paintDots');
-    const eyebrowEl = document.getElementById('paintEyebrow');
-    const nameEl = document.getElementById('paintName');
-    const tagEl = document.getElementById('paintTag');
-    const linkEl = document.getElementById('paintLink');
-    const hintEl = document.getElementById('swipeHint');
-
-    let current = 0;
-    let dragging = false;
-    let startX = 0;
-    let startTime = 0;
-    let dragPct = 0;
-    let hasInteracted = false;
-
-    function paintFor(i){ return heroArtists[(i + heroArtists.length) % heroArtists.length]; }
-
-    function renderDots(){
-      dotsEl.innerHTML = '';
-      heroArtists.forEach((_, i) => {
-        const d = document.createElement('span');
-        d.className = 'paint-dot' + (i === current ? ' active' : '');
-        dotsEl.appendChild(d);
-      });
-    }
-
-    function setSlideArt(el, artist){
-      const holder = el.querySelector('.paint-slide-art');
-      if (artist.photo) {
-        holder.style.background = '';
-        holder.innerHTML = `<img src="${artist.photo}" alt="${artist.name}">`;
-      } else {
-        holder.innerHTML = '';
-        holder.style.background = artist.art;
-      }
-    }
-
-    function setInfo(artist, index){
-      eyebrowEl.textContent = `Artist 0${index + 1}`;
-      nameEl.textContent = artist.name;
-      tagEl.textContent = artist.tag;
-      linkEl.textContent = `Explore ${artist.name.split(' ')[0]}'s work \u2192`;
-      linkEl.href = artist.href;
-    }
-
-    setSlideArt(slideA, paintFor(current));
-    setSlideArt(slideB, paintFor(current + 1));
-    setInfo(paintFor(current), current);
-    renderDots();
-
-    function updateDrag(pct){
-      dragPct = Math.max(0, Math.min(1, pct));
-      slideB.style.transform = `translateX(${(1 - dragPct) * -100}%)`;
-      slideB.style.opacity = 1;
-    }
-
-    function finishDrag(){
-      dragging = false;
-      hero.classList.remove('is-dragging');
-      const elapsed = Math.max(1, Date.now() - startTime);
-      const velocity = dragPct / (elapsed / 1000); // fraction of width per second
-      if (dragPct > 0.28 || (dragPct > 0.06 && velocity > 0.5)) {
-        completeAdvance();
-      } else {
-        slideB.style.transition = 'transform .5s cubic-bezier(.22,.61,.36,1)';
-        slideB.style.transform = 'translateX(-100%)';
-        setTimeout(() => { slideB.style.transition = ''; }, 500);
-      }
-      dragPct = 0;
-    }
-
-    function completeAdvance(){
-      slideB.style.transition = 'transform .6s cubic-bezier(.22,.61,.36,1)';
-      slideB.style.transform = 'translateX(0%)';
-      current = (current + 1) % heroArtists.length;
-      setInfo(paintFor(current), current);
-      renderDots();
-      setTimeout(() => {
-        setSlideArt(slideA, paintFor(current));
-        slideB.style.transition = '';
-        slideB.style.transform = 'translateX(-100%)';
-        setSlideArt(slideB, paintFor(current + 1));
-      }, 620);
-    }
-
-    function markInteracted(){
-      if (hasInteracted) return;
-      hasInteracted = true;
-      hintEl.classList.add('hidden');
-      try { localStorage.setItem('tsg-hero-swiped', '1'); } catch(e){}
-    }
-
-    try {
-      if (localStorage.getItem('tsg-hero-swiped')) {
-        hasInteracted = true;
-        hintEl.classList.add('hidden');
-      }
-    } catch(e){}
-
-    hero.addEventListener('touchstart', (e) => {
-      dragging = true;
-      hero.classList.add('is-dragging');
-      startX = e.touches[0].clientX;
-      startTime = Date.now();
-    }, { passive: true });
-
-    hero.addEventListener('touchmove', (e) => {
-      if (!dragging) return;
-      markInteracted();
-      const dx = startX - e.touches[0].clientX;
-      updateDrag(dx / hero.offsetWidth);
-    }, { passive: true });
-
-    hero.addEventListener('touchend', finishDrag);
-
-    hero.addEventListener('mousedown', (e) => {
-      dragging = true;
-      hero.classList.add('is-dragging');
-      startX = e.clientX;
-      startTime = Date.now();
-      e.preventDefault();
-    });
-    window.addEventListener('mousemove', (e) => {
-      if (!dragging) return;
-      markInteracted();
-      const dx = startX - e.clientX;
-      updateDrag(dx / hero.offsetWidth);
-    });
-    window.addEventListener('mouseup', () => { if (dragging) finishDrag(); });
-
-    dotsEl.addEventListener('click', (e) => {
-      const dots = Array.from(dotsEl.children);
-      const idx = dots.indexOf(e.target);
-      if (idx === -1 || idx === current) return;
-      markInteracted();
-      current = idx;
-      setSlideArt(slideA, paintFor(current));
-      setSlideArt(slideB, paintFor(current + 1));
-      setInfo(paintFor(current), current);
-      renderDots();
-      slideB.style.transform = 'translateX(-100%)';
-    });
-  })();
-</script>
 
 
 <div class="sticky-cta">
