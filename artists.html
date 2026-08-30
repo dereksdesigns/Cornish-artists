@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Artists — The Screen Gallery</title>
-<meta name="description" content="Meet the independent artists behind The Screen Gallery. Each artist has their own exhibition page with available work and reviews.">
-<meta property="og:title" content="Artists — The Screen Gallery">
-<meta property="og:description" content="Meet the independent artists behind The Screen Gallery. Each artist has their own exhibition page with available work and reviews.">
+<title>The Screen Gallery</title>
+<meta name="description" content="An online gallery representing independent artists. Browse original art, meet the artists, and buy directly — no gallery walls required.">
+<meta property="og:title" content="The Screen Gallery">
+<meta property="og:description" content="An online gallery representing independent artists. Browse original art, meet the artists, and buy directly — no gallery walls required.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://thescreengallery.shop/artists.html">
+<meta property="og:url" content="https://thescreengallery.shop/index.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
@@ -22,6 +22,17 @@
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXXXXX');
 </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OnlineStore",
+  "name": "The Screen Gallery",
+  "url": "https://thescreengallery.shop",
+  "description": "An online gallery representing independent artists, selling original artwork directly to buyers.",
+  "email": "thescreengallery.shop@gmail.com"
+}
+</script>
 </head>
 <body>
 
@@ -29,8 +40,8 @@
   <div class="container nav">
     <div class="brand">The <em>Screen</em> Gallery</div>
     <nav class="links">
-      <a href="index.html">Home</a>
-      <a href="artists.html" class="current">Artists</a>
+      <a href="index.html" class="current">Home</a>
+      <a href="artists.html">Artists</a>
       <a href="gallery.html">Gallery</a>
       <a href="buyers.html">Buyers</a>
       <a href="contact.html">Contact</a>
@@ -38,44 +49,103 @@
   </div>
 </header>
 
-<section class="page-hero">
-  <div class="container">
-    <div class="breadcrumbs"><a href="index.html">Home</a><span>/</span>Artists</div>
-    <span class="eyebrow">Meet the artists</span>
-    <h1>Every exhibition has its own room.</h1>
-    <p class="lede">Each artist here has their own space — step inside to see their full collection, reviews, and how to buy.</p>
+<section class="about-us" id="about">
+  <div class="container about-us-inner">
+    <span class="eyebrow-sm reveal">About us</span>
+    <h2 class="reveal">A gallery without walls</h2>
+    <p class="about-lede reveal">The Screen Gallery represents independent artists — we manage the platform, promote their work, and handle every sale, so they can focus on making it.</p>
+
+    <div class="about-tabs reveal" id="aboutTabs">
+      <button class="about-tab active" data-tab="0">Real Art</button>
+      <button class="about-tab" data-tab="1">Real Artists</button>
+      <button class="about-tab" data-tab="2">No Walls</button>
+    </div>
+
+    <div class="about-panels">
+      <p class="about-panel active" data-panel="0">Every piece in our gallery is original — abstract, coastal-inspired, hand-made work born from real experience, texture, and story. This isn't stock art or prints; it's art made by people who've lived the moments behind it, and you can feel that in every brushstroke.</p>
+      <p class="about-panel" data-panel="1">We work with independent artists — people who've turned careers, setbacks, and lifelong passions into a body of work. The Screen Gallery helps them reach buyers they wouldn't otherwise find, handling the website, sales, and promotion, so they can focus on what they do best: creating.</p>
+      <p class="about-panel" data-panel="2">Traditional galleries come with real barriers — expensive wall space, steep commission rates, and limited visibility. The Screen Gallery removes those walls: lower costs, wider exposure, and a platform that's genuinely accessible to any independent artist ready to share their work with the world.</p>
+    </div>
+
+    <div class="about-links">
+      <a href="artists.html" class="about-link-card">
+        <span class="num">Artists</span>
+        <p>Meet the people behind the work.</p>
+        <span class="go">View artists &rarr;</span>
+      </a>
+      <a href="gallery.html" class="about-link-card">
+        <span class="num">Gallery</span>
+        <p>Browse available work and enquire.</p>
+        <span class="go">Browse gallery &rarr;</span>
+      </a>
+      <a href="buyers.html" class="about-link-card">
+        <span class="num">Buyers</span>
+        <p>New here? See how buying works.</p>
+        <span class="go">How it works &rarr;</span>
+      </a>
+    </div>
   </div>
 </section>
 
-<section class="featured">
-  <div class="container">
-    <div class="exhibit-grid">
-
-      <a class="exhibit-card" href="artists/derek-slavin.html">
-        <div class="exhibit-art"><img src="IMG_5386.jpeg" alt="Derek Slavin"></div>
-        <div class="exhibit-info">
-          <h3>Derek Slavin</h3>
-          <span class="exhibit-enter">Enter exhibition &rarr;</span>
-        </div>
-      </a>
-
-      <a class="exhibit-card" href="artists/artist-2.html">
-        <div class="exhibit-art"></div>
-        <div class="exhibit-info">
-          <h3>Artist 2</h3>
-          <span class="exhibit-enter">Enter exhibition &rarr;</span>
-        </div>
-      </a>
-
-      <a class="exhibit-card" href="artists/artist-3.html">
-        <div class="exhibit-art"></div>
-        <div class="exhibit-info">
-          <h3>Artist 3</h3>
-          <span class="exhibit-enter">Enter exhibition &rarr;</span>
-        </div>
-      </a>
-
+<section class="owner">
+  <div class="container owner-inner">
+    <div class="owner-photo"></div>
+    <div class="owner-text">
+      <span class="eyebrow-sm">From the founder</span>
+      <h2>Hi, I'm Maggie Kent</h2>
+      <p>There's a lot of talent within our communities that never gets the chance to be shown — held back by high gallery fees and little exposure to the people who'd genuinely love to buy it.</p>
+      <p>Derek was my first artist, someone I met through work. I originally built this website just to help him sell his art online — but a lot more opportunity and ideas grew out of that. The Screen Gallery is what it turned into: a place for independent artists to be seen, without the barriers that usually stand in the way.</p>
     </div>
+  </div>
+</section>
+
+<section class="paint-hero" id="paintHero">
+  <div class="paint-noise" aria-hidden="true"></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <clipPath id="brushClip" clipPathUnits="objectBoundingBox">
+        <path d="M0.07,0 C0.05,0.05 0.09,0.09 0.04,0.14 C0,0.18 0.08,0.22 0.05,0.27
+                 C0.02,0.32 0.09,0.36 0.06,0.41 C0.03,0.46 0.08,0.5 0.04,0.55
+                 C0,0.6 0.09,0.64 0.05,0.69 C0.02,0.74 0.08,0.78 0.05,0.83
+                 C0.02,0.88 0.07,0.94 0.06,1 L1,1 L1,0 Z"/>
+      </clipPath>
+    </defs>
+  </svg>
+
+  <div class="paint-slide" data-slide="0">
+    <div class="paint-slide-art"></div>
+  </div>
+  <div class="paint-slide paint-slide-next" data-slide="1">
+    <div class="paint-slide-art"></div>
+  </div>
+
+  <div class="paint-overlay">
+    <div class="container paint-overlay-inner">
+      <span class="paint-eyebrow" id="paintEyebrow">Artist 01</span>
+      <h1 class="paint-name" id="paintName">Derek Slavin</h1>
+      <p class="paint-tag" id="paintTag">Contemporary artist</p>
+      <a class="paint-link" id="paintLink" href="artists/derek-slavin.html">Explore Derek's work &rarr;</a>
+    </div>
+  </div>
+
+  <div class="paint-dots" id="paintDots"></div>
+  <span class="swipe-hint" id="swipeHint">Swipe to discover &rarr;</span>
+</section>
+
+<section class="look-strip">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow-sm">A closer look</span>
+      <h2>Recent work</h2>
+    </div>
+  </div>
+  <div class="look-row">
+    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
+    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
+    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
+    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
+    <a class="look-item" href="gallery.html"><div class="look-art"></div></a>
   </div>
 </section>
 
@@ -88,6 +158,33 @@
   </div>
 </section>
 
+<section class="newsletter">
+  <div class="container newsletter-inner">
+    <span class="script" style="font-size:26px; display:block; margin-bottom:10px;">Stay in the loop</span>
+    <h2>New work, every month.</h2>
+    <p>Get the latest pieces from our artists dropped straight into your inbox — no spam, just new art and a direct link to buy.</p>
+
+    <!--
+      HOW TO CONNECT THIS FORM TO MAILCHIMP:
+      1. Create a free account at mailchimp.com and set up an Audience.
+      2. In Mailchimp, go to Audience > Signup forms > Embedded forms.
+      3. Copy the "action" URL from the <form> tag they give you
+         (it looks like: https://yourname.usXX.list-manage.com/subscribe/post?u=XXXX&id=XXXX)
+      4. Paste that URL into the form action="" below, replacing the placeholder.
+      5. Also copy their hidden "bot-field" input (starts with b_) and paste it
+         in place of the example one below, with YOUR unique values.
+    -->
+    <form action="https://PASTE-YOUR-MAILCHIMP-URL-HERE" method="post" target="_blank" class="newsletter-form">
+      <input type="email" name="EMAIL" placeholder="Your email address" required>
+      <!-- Mailchimp anti-bot field — replace name/id with the one Mailchimp gives you -->
+      <div style="position:absolute; left:-5000px;" aria-hidden="true">
+        <input type="text" name="b_XXXXXXXXXXXXXXXXXXXXXXXXX_XXXXXXXXXX" tabindex="-1" value="">
+      </div>
+      <button type="submit" class="btn">Subscribe</button>
+    </form>
+  </div>
+</section>
+
 <footer>
   <div class="container footer-grid">
     <div class="brand">The <em>Screen</em> Gallery</div>
@@ -96,6 +193,210 @@
 </footer>
 
 
+
+<script>
+  // ---- About Us: tab switching + scroll reveal --------------------------
+  (function initAbout(){
+    const tabs = document.querySelectorAll('.about-tab');
+    const panels = document.querySelectorAll('.about-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelector(`.about-panel[data-panel="${tab.dataset.tab}"]`).classList.add('active');
+      });
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && revealEls.length) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach(el => io.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add('in-view'));
+    }
+  })();
+</script>
+
+<script>
+  // ---- Paint-swipe hero -------------------------------------------------
+  const heroArtists = [
+    {
+      name: "Derek Slavin",
+      tag: "Contemporary artist",
+      href: "artists/derek-slavin.html",
+      photo: "IMG_5386.jpeg"
+    },
+    {
+      name: "Artist 2",
+      tag: "Contemporary artist",
+      href: "artists/artist-2.html",
+      art: "linear-gradient(135deg, #4f7570 0%, #b9a888 100%)"
+    },
+    {
+      name: "Artist 3",
+      tag: "Contemporary artist",
+      href: "artists/artist-3.html",
+      art: "linear-gradient(135deg, #0e1c2a 0%, #ab8a53 100%)"
+    }
+  ];
+
+  (function initPaintHero(){
+    const hero = document.getElementById('paintHero');
+    if (!hero) return;
+
+    const slideA = hero.querySelector('[data-slide="0"]');
+    const slideB = hero.querySelector('[data-slide="1"]');
+    const dotsEl = document.getElementById('paintDots');
+    const eyebrowEl = document.getElementById('paintEyebrow');
+    const nameEl = document.getElementById('paintName');
+    const tagEl = document.getElementById('paintTag');
+    const linkEl = document.getElementById('paintLink');
+    const hintEl = document.getElementById('swipeHint');
+
+    let current = 0;
+    let dragging = false;
+    let startX = 0;
+    let startTime = 0;
+    let dragPct = 0;
+    let hasInteracted = false;
+
+    function paintFor(i){ return heroArtists[(i + heroArtists.length) % heroArtists.length]; }
+
+    function renderDots(){
+      dotsEl.innerHTML = '';
+      heroArtists.forEach((_, i) => {
+        const d = document.createElement('span');
+        d.className = 'paint-dot' + (i === current ? ' active' : '');
+        dotsEl.appendChild(d);
+      });
+    }
+
+    function setSlideArt(el, artist){
+      const holder = el.querySelector('.paint-slide-art');
+      if (artist.photo) {
+        holder.style.background = '';
+        holder.innerHTML = `<img src="${artist.photo}" alt="${artist.name}">`;
+      } else {
+        holder.innerHTML = '';
+        holder.style.background = artist.art;
+      }
+    }
+
+    function setInfo(artist, index){
+      eyebrowEl.textContent = `Artist 0${index + 1}`;
+      nameEl.textContent = artist.name;
+      tagEl.textContent = artist.tag;
+      linkEl.textContent = `Explore ${artist.name.split(' ')[0]}'s work \u2192`;
+      linkEl.href = artist.href;
+    }
+
+    setSlideArt(slideA, paintFor(current));
+    setSlideArt(slideB, paintFor(current + 1));
+    setInfo(paintFor(current), current);
+    renderDots();
+
+    function updateDrag(pct){
+      dragPct = Math.max(0, Math.min(1, pct));
+      slideB.style.transform = `translateX(${(1 - dragPct) * -100}%)`;
+      slideB.style.opacity = 1;
+    }
+
+    function finishDrag(){
+      dragging = false;
+      hero.classList.remove('is-dragging');
+      const elapsed = Math.max(1, Date.now() - startTime);
+      const velocity = dragPct / (elapsed / 1000); // fraction of width per second
+      if (dragPct > 0.28 || (dragPct > 0.06 && velocity > 0.5)) {
+        completeAdvance();
+      } else {
+        slideB.style.transition = 'transform .5s cubic-bezier(.22,.61,.36,1)';
+        slideB.style.transform = 'translateX(-100%)';
+        setTimeout(() => { slideB.style.transition = ''; }, 500);
+      }
+      dragPct = 0;
+    }
+
+    function completeAdvance(){
+      slideB.style.transition = 'transform .6s cubic-bezier(.22,.61,.36,1)';
+      slideB.style.transform = 'translateX(0%)';
+      current = (current + 1) % heroArtists.length;
+      setInfo(paintFor(current), current);
+      renderDots();
+      setTimeout(() => {
+        setSlideArt(slideA, paintFor(current));
+        slideB.style.transition = '';
+        slideB.style.transform = 'translateX(-100%)';
+        setSlideArt(slideB, paintFor(current + 1));
+      }, 620);
+    }
+
+    function markInteracted(){
+      if (hasInteracted) return;
+      hasInteracted = true;
+      hintEl.classList.add('hidden');
+      try { localStorage.setItem('tsg-hero-swiped', '1'); } catch(e){}
+    }
+
+    try {
+      if (localStorage.getItem('tsg-hero-swiped')) {
+        hasInteracted = true;
+        hintEl.classList.add('hidden');
+      }
+    } catch(e){}
+
+    hero.addEventListener('touchstart', (e) => {
+      dragging = true;
+      hero.classList.add('is-dragging');
+      startX = e.touches[0].clientX;
+      startTime = Date.now();
+    }, { passive: true });
+
+    hero.addEventListener('touchmove', (e) => {
+      if (!dragging) return;
+      markInteracted();
+      const dx = startX - e.touches[0].clientX;
+      updateDrag(dx / hero.offsetWidth);
+    }, { passive: true });
+
+    hero.addEventListener('touchend', finishDrag);
+
+    hero.addEventListener('mousedown', (e) => {
+      dragging = true;
+      hero.classList.add('is-dragging');
+      startX = e.clientX;
+      startTime = Date.now();
+      e.preventDefault();
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!dragging) return;
+      markInteracted();
+      const dx = startX - e.clientX;
+      updateDrag(dx / hero.offsetWidth);
+    });
+    window.addEventListener('mouseup', () => { if (dragging) finishDrag(); });
+
+    dotsEl.addEventListener('click', (e) => {
+      const dots = Array.from(dotsEl.children);
+      const idx = dots.indexOf(e.target);
+      if (idx === -1 || idx === current) return;
+      markInteracted();
+      current = idx;
+      setSlideArt(slideA, paintFor(current));
+      setSlideArt(slideB, paintFor(current + 1));
+      setInfo(paintFor(current), current);
+      renderDots();
+      slideB.style.transform = 'translateX(-100%)';
+    });
+  })();
+</script>
 
 
 <div class="sticky-cta">
