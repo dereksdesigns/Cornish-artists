@@ -596,3 +596,42 @@ footer p{color:rgba(247,244,236,0.6); font-size:13px; margin:0;}
 .exhibit-card:hover .exhibit-art {
   transform: none;
 }
+
+/* ---------- Gallery enquiry button visibility ---------- */
+
+.gallery-piece {
+  min-height: 420px;
+  height: auto;
+}
+
+.gallery-art {
+  flex: 1 1 auto;
+  min-height: 250px;
+}
+
+.gallery-info {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 18px;
+  background: var(--linen);
+  z-index: 2;
+}
+
+.gallery-info .btn {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .gallery-piece,
+  .gallery-piece.span-2,
+  .gallery-piece.tall {
+    min-height: 420px;
+  }
+
+  .gallery-art {
+    min-height: 240px;
+  }
+}
